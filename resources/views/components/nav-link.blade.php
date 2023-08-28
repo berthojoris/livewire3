@@ -5,5 +5,5 @@
 @endphp
 
 <li class="nav-item">
-	<a {{ $attributes->merge(['class' => $classes]) }}>{{ $slot }}</a>
+	<a {{ $attributes->merge(['class' => $classes]) }} wire:navigate.hover>{{ $slot }}</a>
 </li>

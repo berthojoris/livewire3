@@ -26,4 +26,9 @@ class Blog extends Component
     {
         $this->form->save();
     }
+
+	public function clearDb()
+    {
+        \App\Models\Blog::truncate();
+    }
 }

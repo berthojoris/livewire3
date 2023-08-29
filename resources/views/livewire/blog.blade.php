@@ -1,27 +1,13 @@
-<div>
-	<main role="main" class="container">
-		<h1 class="mt-5">Blog</h1>
-
+<div class="row">
+	<div class="col-lg-6">
 		<x-flash-message />
-
-		<form wire:submit='store' class="mt-3">
-			<div class="form-group">
-				<label for="title">Title</label>
-				<input type="text" class="form-control" id="title" name="title" placeholder="Enter title" wire:model='form.title' autocomplete="off">
-				@error('form.title')
-					<div class="alert alert-danger">{{ $message }}</div>
-				@enderror
-			</div>
-
-			<div class="form-group">
-				<label for="body">Body</label>
-				<input type="text" class="form-control" id="body" name="body" placeholder="Body" wire:model='form.body' autocomplete="off">
-				@error('form.body')
-					<div class="alert alert-danger">{{ $message }}</div>
-				@enderror
-			</div>
-
-			<button type="submit" class="btn btn-primary mt-3">Submit</button>
-		</form>
-	  </main>
+		<x-blog-create></x-blog-create>
+	</div>
+	<div class="col-lg-6">
+		@foreach ($blogs as $blog)
+			<h5>{{ $blog->title }}</h5>
+			<p>{{ $blog->user->name }}</p>
+			<hr>
+		@endforeach
+	</div>
 </div>

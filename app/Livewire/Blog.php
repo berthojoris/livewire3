@@ -2,11 +2,13 @@
 
 namespace App\Livewire;
 
-use App\Livewire\Forms\BlogPost;
-use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Layout;
+use App\Livewire\Forms\BlogPost;
 
 #[Title('Blog')]
+#[Layout('layouts.post')]
 
 class Blog extends Component
 {
@@ -14,7 +16,10 @@ class Blog extends Component
 
     public function render()
     {
-        return view('livewire.blog');
+		$blog = \App\Models\Blog::query()->latest()->get();
+        return view('livewire.blog', [
+			'blogs' => $blog
+		]);
     }
 
     public function store()

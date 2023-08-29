@@ -13,7 +13,7 @@
 
 			<div class="form-group">
 				<label for="body">Password</label>
-				<input type="password" class="form-control" id="password" name="password" placeholder="password" wire:model='form.password' autocomplete="off">
+				<input type="password" class="form-control" id="password" name="password" placeholder="Password" wire:model='form.password' autocomplete="off">
 				@error('form.password')
 					<div class="alert alert-danger">{{ $message }}</div>
 				@enderror

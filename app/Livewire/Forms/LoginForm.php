@@ -10,10 +10,10 @@ use Livewire\Form;
 class LoginForm extends Form
 {
     #[Rule(['required', 'email'])]
-    public string $email = '';
+    public string $email = 'berthojoris@gmail.com';
 
     #[Rule(['required'])]
-    public string $password = '';
+    public string $password = 'malaquena';
 
     public function login()
     {

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blog;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
+use App\Models\Blog;
 
 class BlogController extends Controller
 {

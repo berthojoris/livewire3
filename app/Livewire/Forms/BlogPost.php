@@ -2,29 +2,28 @@
 
 namespace App\Livewire\Forms;
 
-use Livewire\Form;
 use App\Models\User;
 use Livewire\Attributes\Rule;
+use Livewire\Form;
 
 class BlogPost extends Form
 {
     #[Rule(['required'])]
-	public string $title = "";
+    public string $title = '';
 
-	#[Rule(['required'])]
-	public string $body = "";
+    #[Rule(['required'])]
+    public string $body = '';
 
-
-	public function save(): void
+    public function save(): void
     {
-		$validated = $this->validate();
+        $validated = $this->validate();
 
-		$user = User::find(1);
+        $user = User::find(1);
 
-		$user->blogs()->create($validated);
+        $user->blogs()->create($validated);
 
-		flash('Berhasil menambahkan data', 'success');
+        flash('Berhasil menambahkan data', 'success');
 
-		$this->reset();
+        $this->reset();
     }
 }

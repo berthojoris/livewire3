@@ -5,9 +5,9 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 				<x-nav-link :active="request()->routeIs('home')" href="{{ route('home') }}">Home</x-nav-link>
+				<x-nav-link :active="request()->routeIs('blog')" href="{{ route('blog') }}">Blog</x-nav-link>
 				<x-nav-link :active="request()->routeIs('about')" href="{{ route('about') }}">About</x-nav-link>
 				<x-nav-link :active="request()->routeIs('contact')" href="{{ route('contact') }}">Contact</x-nav-link>
-				<x-nav-link :active="request()->routeIs('blog')" href="{{ route('blog') }}">Blog</x-nav-link>
 			</ul>
 		</div>
 	</div>

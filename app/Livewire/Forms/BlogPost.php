@@ -23,6 +23,8 @@ class BlogPost extends Form
 
 		$user->blogs()->create($validated);
 
+		flash('Berhasil menambahkan data', 'success');
+
 		$this->reset();
     }
 }

@@ -1,6 +1,9 @@
 <div>
 	<main role="main" class="container">
 		<h1 class="mt-5">Blog</h1>
+
+		<x-flash-message />
+
 		<form wire:submit='store' class="mt-3">
 			<div class="form-group">
 				<label for="title">Title</label>

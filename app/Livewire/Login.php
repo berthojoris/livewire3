@@ -3,6 +3,9 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\Attributes\Layout;
+
+#[Layout('layouts.login')]
 
 class Login extends Component
 {
@@ -10,4 +13,9 @@ class Login extends Component
     {
         return view('livewire.login');
     }
+
+	public function login()
+	{
+		dd("yeay");
+	}
 }

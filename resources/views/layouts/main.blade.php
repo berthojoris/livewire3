@@ -7,7 +7,8 @@
         <meta name="author" content="" />
         <title>{{ $title ?? env('APP_NAME') }}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('template/assets/favicon.ico') }}" />
-        <link href="{{ asset('template/css/styles.css') }}" rel="stylesheet" />
+
+		@vite(['resources/js/app.js', 'resources/css/app.css'])
     </head>
     <body>
         <x-navigation-menu/>
@@ -60,7 +61,6 @@
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
         </footer>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('template/js/scripts.js') }}"></script>
     </body>
 </html>

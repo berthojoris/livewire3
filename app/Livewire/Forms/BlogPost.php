@@ -18,7 +18,7 @@ class BlogPost extends Form
     {
         $validated = $this->validate();
 
-        $user = User::find(1);
+        $user = auth()->user();
 
         $user->blogs()->create($validated);
 

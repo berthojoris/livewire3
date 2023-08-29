@@ -23,6 +23,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', function () {
         Auth::logout();
 
-        return redirect('/');
+        return to_route('home');
     })->name('logout');
 });

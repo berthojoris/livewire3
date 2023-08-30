@@ -31,4 +31,14 @@ class Blog extends Component
     {
         \App\Models\Blog::truncate();
     }
+
+	public function remove($id)
+    {
+        $this->form->delete($id);
+    }
+
+	public function detail($id)
+    {
+        $this->form->openDetail($id);
+    }
 }

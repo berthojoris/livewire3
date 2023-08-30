@@ -9,10 +9,12 @@ Route::get('/contact', App\Livewire\Contact::class)->name('contact');
 Route::get('/login', App\Livewire\Login::class)->name('login');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/blog', App\Livewire\Blog::class)->name('blog');
     Route::post('/logout', function () {
         Auth::logout();
 
         return to_route('home');
     })->name('logout');
+
+	Route::get('/blog', App\Livewire\Blog::class)->name('blog');
+	Route::get('/blog/detail/{id}', App\Livewire\BlogOpenDetail::class)->name('blog_open_detail');
 });

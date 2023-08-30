@@ -14,7 +14,12 @@
 				<td><button class="btn btn-danger" wire:click='remove({{ $blog->id }})'>Delete</button></td>
 			</tr>
 		@endforeach
-
-		{{ $blogs->links() }}
     </tbody>
 </table>
+{{ $blogs->links() }}
+
+<style>
+	.cursor-default {
+		margin-right: 5px;
+	}
+</style>

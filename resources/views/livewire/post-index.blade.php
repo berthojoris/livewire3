@@ -5,7 +5,8 @@
 			<x-post-create></x-post-create>
 		</div>
 		<div class="col-md-6">
-			<x-post-list :blogs="$blogs"></x-post-list>
+			{{-- <x-post-list :blogs="$blogs"></x-post-list> --}}
+			<x-table-list></x-table-list>
 		</div>
 	</div>
 </div>

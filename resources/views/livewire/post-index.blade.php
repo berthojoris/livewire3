@@ -2,10 +2,10 @@
     <div class="row">
 		<div class="col-md-6">
 			<x-flash-message></x-flash-message>
-			<x-blog-create></x-blog-create>
+			<x-post-create></x-post-create>
 		</div>
 		<div class="col-md-6">
-			<x-blog-list :blogs="$blogs"></x-blog-list>
+			<x-post-list :blogs="$blogs"></x-post-list>
 		</div>
 	</div>
 </div>

@@ -25,6 +25,7 @@ class Blog extends Component
     public function store()
     {
         $this->form->save();
+		// $this->js("alert('Blog saved!')");
     }
 
 	public function clearDb()

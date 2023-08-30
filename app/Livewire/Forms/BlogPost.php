@@ -15,13 +15,31 @@ class BlogPost extends Form
     #[Rule(['required'])]
     public string $body = '';
 
-    public function save(): void
+	public ?Blog $blog;
+
+	public function setBlog($id)
+    {
+		$blog = Blog::whereId($id)->firstOrFail();
+        $this->blog = $blog;
+        $this->title = $blog->title;
+        $this->body = $blog->body;
+    }
+
+    public function save()
     {
         $validated = $this->validate();
         $user = auth()->user();
         $user->blogs()->create($validated);
         flash('Berhasil menambahkan data', 'success');
         $this->reset();
+    }
+
+	public function update() {
+		$validated = $this->validate();
+        $this->blog->update($validated);
+		flash('Berhasil mengupdate data', 'success');
+		$this->reset();
+		return redirect()->route('blog');
     }
 
 	public function delete($id) {

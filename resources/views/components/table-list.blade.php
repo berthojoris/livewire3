@@ -11,7 +11,10 @@
 			<tr wire:key='{{ $blog->id }}'>
 				<td>{{ $blog->title }}</td>
 				<td>{{ $blog->body }}</td>
-				<td><button class="btn btn-danger" wire:click='remove({{ $blog->id }})'>Delete</button></td>
+				<td>
+					<button class="btn btn-info" wire:click='detail({{ $blog->id }})'>Detail</button>
+					<button class="btn btn-danger" wire:click='remove({{ $blog->id }})'>Delete</button>
+				</td>
 			</tr>
 		@endforeach
     </tbody>

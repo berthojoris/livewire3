@@ -22,11 +22,24 @@ class Blog extends Component
 		]);
     }
 
+	public function mount(\App\Models\Blog $blog)
+    {
+        $this->blog = $blog;
+    }
+
     public function store()
     {
         $this->form->save();
 		// $this->js("alert('Blog saved!')");
     }
+
+	// public function updated($name, $value)
+    // {
+	// 	logger("updated");
+    //     $this->blog->update([
+    //         $name => $value,
+    //     ]);
+    // }
 
 	public function clearDb()
     {

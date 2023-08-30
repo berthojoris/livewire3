@@ -6,7 +6,7 @@
 		</div>
 		<div class="col-md-6">
 			{{-- <x-post-list :blogs="$blogs"></x-post-list> --}}
-			<x-table-list></x-table-list>
+			<x-table-list :blogs="$blogs"></x-table-list>
 		</div>
 	</div>
 </div>

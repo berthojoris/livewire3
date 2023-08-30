@@ -39,7 +39,7 @@ class BlogPost extends Form
         $this->blog->update($validated);
 		flash('Berhasil mengupdate data', 'success');
 		$this->reset();
-		return redirect()->route('blog');
+		return redirect()->route('post');
     }
 
 	public function delete($id) {

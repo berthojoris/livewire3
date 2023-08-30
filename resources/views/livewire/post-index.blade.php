@@ -1,3 +1,10 @@
 <div>
-    {{-- Stop trying to control. --}}
+    <div class="row">
+		<div class="col-md-6">
+			<x-blog-create></x-blog-create>
+		</div>
+		<div class="col-md-6">
+			<x-blog-list :blogs="$blogs"></x-blog-list>
+		</div>
+	</div>
 </div>

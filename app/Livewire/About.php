@@ -9,6 +9,11 @@ use Livewire\Component;
 
 class About extends Component
 {
+	public function mount()
+	{
+		$this->js("alert('monted')");
+	}
+
     public function render()
     {
         return view('livewire.about');

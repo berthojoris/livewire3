@@ -5,3 +5,7 @@
 		<p>Back to <a href="../sticky-footer/">the default sticky footer</a> minus the navbar.</p>
 	  </main>
 </div>
+
+<script>
+
+</script>

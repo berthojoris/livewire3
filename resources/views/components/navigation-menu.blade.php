@@ -12,6 +12,7 @@
 
 				@auth
 					{{-- <x-nav-link :active="request()->routeIs('blog')" href="{{ route('blog') }}">Create Blog</x-nav-link> --}}
+					<x-nav-link :active="request()->routeIs('list')" href="{{ route('list') }}">List</x-nav-link>
 					<x-nav-link :active="request()->routeIs('post')" href="{{ route('post') }}">Post</x-nav-link>
 					<form action="{{ route('logout') }}" method="POST">
 						@csrf

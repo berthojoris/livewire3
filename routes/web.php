@@ -17,4 +17,6 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('/post', App\Livewire\PostIndex::class)->name('post');
 	Route::get('/post/detail/{id}', App\Livewire\BlogOpenDetail::class)->name('blog_open_detail');
+
+	Route::get('/list', App\Livewire\ListData::class)->name('list');
 });

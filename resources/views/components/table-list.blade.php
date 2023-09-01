@@ -1,4 +1,5 @@
-<table class="table table-bordered">
+{{-- <table class="table table-bordered" wire:poll.keep-alive> --}}
+	<table class="table table-bordered">
     <thead>
         <tr>
             <th scope="col">Title</th>

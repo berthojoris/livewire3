@@ -9,6 +9,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('template/assets/favicon.ico') }}" />
 
 		@vite(['resources/js/app.js', 'resources/css/app.css'])
+		@stack('css')
     </head>
     <body>
         <x-navigation-menu/>
@@ -16,6 +17,6 @@
 			{{ $slot }}
         </div>
         <script src="{{ asset('template/js/scripts.js') }}"></script>
+		@stack('jslib')
     </body>
-	@stack('jslib')
 </html>

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
@@ -14,14 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-		User::factory()->create([
-            'name' => 'Bertho',
-            'email' => 'berthojoris@gmail.com',
-			'email_verified_at' => now(),
-            'password' => '$2y$10$ifogU5xHOrLjgXx.mR6zOe6PrCx5cqUXhU9cqrn6q5h0EeSMnzgZu', // malaquena
-            'remember_token' => Str::random(10),
-        ]);
+		// User::factory()->create([
+        //     'name' => 'Bertho',
+        //     'email' => 'berthojoris@gmail.com',
+		// 	'email_verified_at' => now(),
+        //     'password' => '$2y$10$ifogU5xHOrLjgXx.mR6zOe6PrCx5cqUXhU9cqrn6q5h0EeSMnzgZu', // malaquena
+        //     'remember_token' => Str::random(10),
+        // ]);
 
-		User::factory(10)->create();
+		// User::factory(3)->create();
+		Blog::factory(3)->create();
     }
 }

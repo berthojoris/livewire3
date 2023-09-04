@@ -1,4 +1,4 @@
-<div wire:ignore>
+<div>
     <table class="table table-bordered" id="datatablex">
 		<thead>
 			<tr>
@@ -35,48 +35,37 @@
 
 @push('jslib')
 <script>
-$(document).ready(function() {
-	var table = $('#datatablex').DataTable({
-		scrollX: true,
-        processing: true,
-        oLanguage: {
-			sProcessing: '<div class="spinner-border text-primary m-1" role="status" style="width: 3rem; height: 3rem;"><span class="sr-only">Loading...</span></div>',
-		},
-        order: [
-            [0, "desc"]
-        ],
-        columns: [
-            {
-                data: 'id',
-            },
-			{
-                data: 'title',
-            },
-            {
-                data: 'start_date',
-            },
-        ],
-    })
-});
+document.addEventListener('livewire:init', () => {
+	console.log("livewire.init")
+	Livewire.hook('component.init', ({ component }) => {
+		console.log("component.init")
+		if(component.name == "about") {
+			console.log("component about")
+		}
+		if(component.name == "list-data") {
+			var table = $('#datatablex').DataTable({
+				scrollX: true,
+				processing: true,
+				oLanguage: {
+					sProcessing: '<div class="spinner-border text-primary m-1" role="status" style="width: 3rem; height: 3rem;"><span class="sr-only">Loading...</span></div>',
+				},
+				order: [
+					[0, "desc"]
+				],
+				columns: [
+					{
+						data: 'id',
+					},
+					{
+						data: 'title',
+					},
+					{
+						data: 'body',
+					},
+				],
+			})
+		}
+	})
+})
 </script>
-{{-- <script>
-document.addEventListener("DOMContentLoaded", () => {
-	console.log("xxxx")
-	Livewire.hook('component.initialized', (component) => {
-		console.log("component.initialized")
-	})
-	Livewire.hook('element.initialized', (el, component) => {
-		console.log("element.initialized")
-	})
-	Livewire.hook('element.updating', (fromEl, toEl, component) => {
-		console.log("element.updating")
-	})
-	Livewire.hook('element.updated', (el, component) => {
-		console.log("element.updated")
-	})
-	Livewire.hook('element.removed', (el, component) => {
-		console.log("element.removed")
-	})
-});
-</script> --}}
 @endpush

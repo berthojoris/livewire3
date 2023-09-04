@@ -1,66 +1,79 @@
 <div>
-    <article>
-		<!-- Post header-->
-		<header class="mb-4">
-			<!-- Post title-->
-			<h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
-			<!-- Post meta content-->
-			<div class="text-muted fst-italic mb-2">Posted on January 1, 2023 by Start Bootstrap</div>
-			<!-- Post categories-->
-			<a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-			<a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
-		</header>
-		<!-- Preview image figure-->
-		<figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
-		<!-- Post content-->
-		<section class="mb-5">
-			<p class="fs-5 mb-4">Science is an enterprise that should be cherished as an activity of the free human mind. Because it transforms who we are, how we live, and it gives us an understanding of our place in the universe.</p>
-			<p class="fs-5 mb-4">The universe is large and old, and the ingredients for life as we know it are everywhere, so there's no reason to think that Earth would be unique in that regard. Whether of not the life became intelligent is a different question, and we'll see if we find that.</p>
-			<p class="fs-5 mb-4">If you get asteroids about a kilometer in size, those are large enough and carry enough energy into our system to disrupt transportation, communication, the food chains, and that can be a really bad day on Earth.</p>
-			<h2 class="fw-bolder mb-4 mt-5">I have odd cosmic thoughts every day</h2>
-			<p class="fs-5 mb-4">For me, the most fascinating interface is Twitter. I have odd cosmic thoughts every day and I realized I could hold them to myself or share them with people who might be interested.</p>
-			<p class="fs-5 mb-4">Venus has a runaway greenhouse effect. I kind of want to know what happened there because we're twirling knobs here on Earth without knowing the consequences of it. Mars once had running water. It's bone dry today. Something bad happened there as well.</p>
-		</section>
-	</article>
-	<section class="mb-5">
-		<div class="card bg-light">
-			<div class="card-body">
-				<!-- Comment form-->
-				<form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
-				<!-- Comment with nested comments-->
-				<div class="d-flex mb-4">
-					<!-- Parent comment-->
-					<div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-					<div class="ms-3">
-						<div class="fw-bold">Commenter Name</div>
-						If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
-						<!-- Child comment 1-->
-						<div class="d-flex mt-4">
-							<div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-							<div class="ms-3">
-								<div class="fw-bold">Commenter Name</div>
-								And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
-							</div>
-						</div>
-						<!-- Child comment 2-->
-						<div class="d-flex mt-4">
-							<div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-							<div class="ms-3">
-								<div class="fw-bold">Commenter Name</div>
-								When you put money directly to a problem, it makes a good headline.
-							</div>
-						</div>
+	<div class="alert alert-custom alert-white alert-shadow fade show gutter-b" role="alert">
+		<div class="alert-icon">
+			<span class="svg-icon svg-icon-primary svg-icon-xl">
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+					<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+						<rect x="0" y="0" width="24" height="24" />
+						<path d="M7.07744993,12.3040451 C7.72444571,13.0716094 8.54044565,13.6920474 9.46808594,14.1079953 L5,23 L4.5,18 L7.07744993,12.3040451 Z M14.5865511,14.2597864 C15.5319561,13.9019016 16.375416,13.3366121 17.0614026,12.6194459 L19.5,18 L19,23 L14.5865511,14.2597864 Z M12,3.55271368e-14 C12.8284271,3.53749572e-14 13.5,0.671572875 13.5,1.5 L13.5,4 L10.5,4 L10.5,1.5 C10.5,0.671572875 11.1715729,3.56793164e-14 12,3.55271368e-14 Z" fill="#000000" opacity="0.3" />
+						<path d="M12,10 C13.1045695,10 14,9.1045695 14,8 C14,6.8954305 13.1045695,6 12,6 C10.8954305,6 10,6.8954305 10,8 C10,9.1045695 10.8954305,10 12,10 Z M12,13 C9.23857625,13 7,10.7614237 7,8 C7,5.23857625 9.23857625,3 12,3 C14.7614237,3 17,5.23857625 17,8 C17,10.7614237 14.7614237,13 12,13 Z" fill="#000000" fill-rule="nonzero" />
+					</g>
+				</svg>
+			</span>
+		</div>
+		<div class="alert-text">Metronic extends
+		<code>Bootstrap Card</code>with
+		<code>.card-custom</code>class to provide a wide range of options for multi-purpose cards.
+		<br />For more info please visit Bootstrap Card's
+		<a class="font-weight-bold" href="https://getbootstrap.com/docs/4.6/components/card/" target="_blank">Documentation</a>.</div>
+	</div>
+
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="card card-custom">
+				<div class="card-header">
+					<div class="card-title">
+						<span class="card-icon">
+						<i class="flaticon2-chat-1 text-primary"></i>
+						</span>
+						<h3 class="card-label">
+							Card Footer
+							<small>sub title</small>
+						</h3>
+					</div>
+					<div class="card-toolbar">
+						<a href="#" class="btn btn-sm btn-success font-weight-bold">
+						<i class="flaticon2-cube"></i> Reports
+						</a>
 					</div>
 				</div>
-				<!-- Single comment-->
-				<div class="d-flex">
-					<div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-					<div class="ms-3">
-						<div class="fw-bold">Commenter Name</div>
-						When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+				<div class="card-body">
+					...
+				</div>
+				<div class="card-footer d-flex justify-content-between">
+					<a href="#" class="btn btn-light-primary font-weight-bold">Manage</a>
+					<a href="#" class="btn btn-outline-secondary font-weight-bold">Learn more</a>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="col-lg-6">
+			<div class="card card-custom">
+				<div class="card-header">
+					<div class="card-title">
+						<span class="card-icon">
+						<i class="flaticon2-chat-1 text-primary"></i>
+						</span>
+						<h3 class="card-label">
+							Card Footer
+							<small>sub title</small>
+						</h3>
 					</div>
+					<div class="card-toolbar">
+						<a href="#" class="btn btn-sm btn-success font-weight-bold">
+						<i class="flaticon2-cube"></i> Reports
+						</a>
+					</div>
+				</div>
+				<div class="card-body">
+					...
+				</div>
+				<div class="card-footer d-flex justify-content-between">
+					<a href="#" class="btn btn-light-primary font-weight-bold">Manage</a>
+					<a href="#" class="btn btn-outline-secondary font-weight-bold">Learn more</a>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 </div>

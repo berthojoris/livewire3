@@ -6,7 +6,7 @@
 	  </main>
 </div>
 
-<script>
+{{-- <script>
 document.addEventListener('livewire:init', () => {
 	console.log("livewire.init")
 	Livewire.hook('component.init', ({ component }) => {
@@ -16,4 +16,4 @@ document.addEventListener('livewire:init', () => {
 		}
 	})
 })
-</script>
+</script> --}}

@@ -12,11 +12,17 @@ use Livewire\Attributes\Layout;
 
 class ListData extends Component
 {
+	public $data;
+
+	public function mount()
+    {
+        $this->data = Blog::all();
+    }
+
     public function render()
     {
-		$blog = Blog::all();
         return view('livewire.list-data', [
-			'blogs' => $blog
+			'blogs' => $this->data
 		]);
     }
 }

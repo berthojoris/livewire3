@@ -1,7 +1,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-	<!--begin::Head-->
 	<head>
 		<meta charset="utf-8" />
 		<title>{{ $title ?? env('APP_NAME') }}</title>

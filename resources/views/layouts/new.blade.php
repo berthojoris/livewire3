@@ -17,7 +17,7 @@
 	<link href="{{ asset('assets/css/themes/layout/brand/dark.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
 	<link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
-	{{-- @vite(['resources/css/engine.js']) --}}
+	@vite(['resources/js/engine.js'])
 </head>
 
 <body id="kt_body"
@@ -36,7 +36,7 @@
 	<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 	<script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
 	<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
-	<script src="{{ asset('assets/js/engine.js') }}"></script>
+	{{-- <script src="{{ asset('assets/js/engine.js') }}"></script> --}}
 </body>
 
 </html>

@@ -21,8 +21,8 @@
 	<body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
 		@include('partials.mobile_header')
 		@include('partials.root')
-		{{-- @include('partials.kt_quick_user')
-		@include('partials.kt_quick_cart')
+		@include('partials.kt_quick_user')
+		{{-- @include('partials.kt_quick_cart')
 		@include('partials.kt_quick_panel')
 		@include('partials.kt_chat_modal')
 		@include('partials.sticky_toolbar')

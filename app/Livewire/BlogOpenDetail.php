@@ -2,23 +2,22 @@
 
 namespace App\Livewire;
 
-use App\Models\Blog;
-use Livewire\Component;
-use Livewire\Attributes\Title;
 use App\Livewire\Forms\BlogPost;
+use Livewire\Attributes\Title;
+use Livewire\Component;
 
 #[Title('Detail')]
 
 class BlogOpenDetail extends Component
 {
-	public BlogPost $form;
+    public BlogPost $form;
 
-	public function mount($id)
+    public function mount($id)
     {
         $this->form->setBlog($id);
     }
 
-	public function update()
+    public function update()
     {
         $this->form->update();
     }

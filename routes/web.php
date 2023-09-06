@@ -15,20 +15,18 @@ Route::middleware(['auth'])->group(function () {
         return to_route('home');
     })->name('logout');
 
-	Route::get('/post', App\Livewire\PostIndex::class)->name('post');
-	Route::get('/post/detail/{id}', App\Livewire\BlogOpenDetail::class)->name('blog_open_detail');
+    Route::get('/post', App\Livewire\PostIndex::class)->name('post');
+    Route::get('/post/detail/{id}', App\Livewire\BlogOpenDetail::class)->name('blog_open_detail');
 
-	Route::get('/list', App\Livewire\ListData::class)->name('list');
+    Route::get('/list', App\Livewire\ListData::class)->name('list');
 
-	Route::prefix('proposal')->group(function () {
-		Route::get('/', App\Livewire\ProposalList::class)->name('proposal');
-		Route::get('/create', App\Livewire\ProposalCreate::class)->name('proposal_create');
-		Route::get('/bypass-date', App\Livewire\ProposalBypass::class)->name('proposal_bypass_date');
-		Route::get('/report', App\Livewire\ProposalReport::class)->name('proposal_report');
-		Route::get('/all', App\Livewire\ProposalListAll::class)->name('proposal_all');
-	});
+    Route::prefix('proposal')->group(function () {
+        Route::get('/', App\Livewire\ProposalList::class)->name('proposal');
+        Route::get('/create', App\Livewire\ProposalCreate::class)->name('proposal_create');
+        Route::get('/bypass-date', App\Livewire\ProposalBypass::class)->name('proposal_bypass_date');
+        Route::get('/report', App\Livewire\ProposalReport::class)->name('proposal_report');
+        Route::get('/all', App\Livewire\ProposalListAll::class)->name('proposal_all');
+    });
 
-
-
-	Route::get('/list', App\Livewire\ListData::class)->name('list');
+    Route::get('/list', App\Livewire\ListData::class)->name('list');
 });

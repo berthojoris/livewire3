@@ -18,8 +18,8 @@ class BlogFactory extends Factory
     {
         return [
             'title' => fake()->name(),
-			'body' => fake()->text(),
-			'user_id' => 1,
+            'body' => fake()->text(),
+            'user_id' => 1,
         ];
     }
 }

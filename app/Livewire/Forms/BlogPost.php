@@ -2,10 +2,9 @@
 
 namespace App\Livewire\Forms;
 
-use Livewire\Form;
 use App\Models\Blog;
-use App\Models\User;
 use Livewire\Attributes\Rule;
+use Livewire\Form;
 
 class BlogPost extends Form
 {
@@ -15,11 +14,11 @@ class BlogPost extends Form
     #[Rule(['required'])]
     public string $body = '';
 
-	public ?Blog $blog;
+    public ?Blog $blog;
 
-	public function setBlog($id)
+    public function setBlog($id)
     {
-		$blog = Blog::whereId($id)->firstOrFail();
+        $blog = Blog::whereId($id)->firstOrFail();
         $this->blog = $blog;
         $this->title = $blog->title;
         $this->body = $blog->body;
@@ -34,22 +33,27 @@ class BlogPost extends Form
         $this->reset();
     }
 
-	public function update() {
-		$validated = $this->validate();
+    public function update()
+    {
+        $validated = $this->validate();
         $this->blog->update($validated);
-		flash('Berhasil mengupdate data', 'success');
-		$this->reset();
-		return redirect()->route('post');
+        flash('Berhasil mengupdate data', 'success');
+        $this->reset();
+
+        return redirect()->route('post');
     }
 
-	public function delete($id) {
-		$data = Blog::whereId($id)->delete();
+    public function delete($id)
+    {
+        $data = Blog::whereId($id)->delete();
         flash('Berhasil menghapus data', 'success');
-	}
+    }
 
-	public function openDetail($id) {
+    public function openDetail($id)
+    {
 
-		$data = Blog::whereId($id)->firstOrFail();
-		return redirect()->route('blog_open_detail', $data->id);
-	}
+        $data = Blog::whereId($id)->firstOrFail();
+
+        return redirect()->route('blog_open_detail', $data->id);
+    }
 }

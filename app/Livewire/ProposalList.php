@@ -6,10 +6,10 @@ use Livewire\Component;
 
 class ProposalList extends Component
 {
-	public function mount()
-	{
-		//
-	}
+    public function mount()
+    {
+        //
+    }
 
     public function render()
     {

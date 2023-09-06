@@ -2,40 +2,42 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\BlogPost;
 use App\Models\Blog;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Livewire\Attributes\Title;
-use Livewire\Attributes\Layout;
-use App\Livewire\Forms\BlogPost;
 
 #[Title('Post')]
 #[Layout('layouts.post')]
 
 class PostIndex extends Component
 {
-	public BlogPost $form;
-	use WithPagination;
+    public BlogPost $form;
+
+    use WithPagination;
 
     public function render()
     {
-		$blog = Blog::query()->latest()->simplePaginate(5);
+        $blog = Blog::query()->latest()->simplePaginate(5);
+
         return view('livewire.post-index', [
-			'blogs' => $blog
-		]);
+            'blogs' => $blog,
+        ]);
     }
 
-	public function store()
+    public function store()
     {
         $this->form->save();
     }
 
-	public function remove($id)
+    public function remove($id)
     {
         $this->form->delete($id);
     }
 
-	public function detail($id)
+    public function detail($id)
     {
         $this->form->openDetail($id);
     }

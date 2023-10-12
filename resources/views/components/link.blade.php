@@ -1,7 +1,7 @@
 @props(['active' => false, 'icon' => $icon, 'href' => $href])
 
 @php
-	$classes = ($active) ? "menu-item menu-item-active" : "menu-item";
+$classes = ($active) ? "menu-item menu-item-active" : "menu-item";
 @endphp
 
 <li {{ $attributes->merge(['class' => $classes]) }} aria-haspopup="true">

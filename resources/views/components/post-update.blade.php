@@ -1,25 +1,27 @@
 <form wire:submit='update' class="mt-3">
 	<div class="form-group">
 		<label for="title">Title</label>
-		<input type="text" class="form-control" id="title" name="title" placeholder="Enter title" wire:model.live='form.title' autocomplete="off">
+		<input type="text" class="form-control" id="title" name="title" placeholder="Enter title"
+			wire:model.live='form.title' autocomplete="off">
 		@error('form.title')
-			<div class="alert alert-danger">{{ $message }}</div>
+		<div class="alert alert-danger">{{ $message }}</div>
 		@enderror
 	</div>
 
 	<div class="form-group">
 		<label for="body">Body</label>
-		<input type="text" class="form-control" id="body" name="body" placeholder="Body" wire:model.live='form.body' autocomplete="off">
+		<input type="text" class="form-control" id="body" name="body" placeholder="Body" wire:model.live='form.body'
+			autocomplete="off">
 		@error('form.body')
-			<div class="alert alert-danger">{{ $message }}</div>
+		<div class="alert alert-danger">{{ $message }}</div>
 		@enderror
 	</div>
 
 	<button type="submit" class="btn btn-primary mt-3">Update</button>
 	<div wire:loading wire:target="store">
-        Saving data ...
-    </div>
+		Saving data ...
+	</div>
 	<div wire:loading wire:target="remove">
-        Removing data ...
-    </div>
+		Removing data ...
+	</div>
 </form>

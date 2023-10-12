@@ -3,12 +3,18 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', App\Livewire\Home::class)->name('home');
+
 Route::get('/about', App\Livewire\About::class)->name('about');
 Route::get('/contact', App\Livewire\Contact::class)->name('contact');
 Route::get('/login', App\Livewire\Login::class)->name('login');
 
 Route::middleware(['auth'])->group(function () {
+	Route::get('/', App\Livewire\Home::class)->name('home');
+	Route::get('/non-kontrak', App\Livewire\NonKontrakIndex::class)->name('non_kontrak_index');
+	Route::get('/kontrak', App\Livewire\KontrakIndex::class)->name('kontrak_index');
+	Route::get('/report', App\Livewire\ReportIndex::class)->name('report_index');
+
+
     Route::post('/logout', function () {
         Auth::logout();
 

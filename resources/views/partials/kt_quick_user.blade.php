@@ -1,30 +1,26 @@
 <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
-	<!--begin::Header-->
 	<div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
 		<h3 class="font-weight-bold m-0">User Profile
-		<small class="text-muted font-size-sm ml-2">12 messages</small></h3>
+		<small class="text-muted font-size-sm ml-2">0 messages</small></h3>
 		<a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
 			<i class="ki ki-close icon-xs text-muted"></i>
 		</a>
 	</div>
-	<!--end::Header-->
-	<!--begin::Content-->
+
 	<div class="offcanvas-content pr-5 mr-n5">
-		<!--begin::Header-->
 		<div class="d-flex align-items-center mt-5">
 			<div class="symbol symbol-100 mr-5">
 				<div class="symbol-label" style="background-image:url('assets/media/users/300_21.jpg')"></div>
 				<i class="symbol-badge bg-success"></i>
 			</div>
 			<div class="d-flex flex-column">
-				<a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">James Jones</a>
+				<a href="#" class="font-weight-bold font-size-h5 text-dark-75 text-hover-primary">{{ auth()->user()->name }}</a>
 				<div class="text-muted mt-1">Application Developer</div>
 				<div class="navi mt-2">
 					<a href="#" class="navi-item">
 						<span class="navi-link p-0 pb-2">
 							<span class="navi-icon mr-1">
 								<span class="svg-icon svg-icon-lg svg-icon-primary">
-									<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-notification.svg-->
 									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 										<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 											<rect x="0" y="0" width="24" height="24" />
@@ -32,23 +28,22 @@
 											<circle fill="#000000" opacity="0.3" cx="19.5" cy="17.5" r="2.5" />
 										</g>
 									</svg>
-									<!--end::Svg Icon-->
 								</span>
 							</span>
-							<span class="navi-text text-muted text-hover-primary">jm@softplus.com</span>
+							<span class="navi-text text-muted text-hover-primary">{{ auth()->user()->email }}</span>
 						</span>
 					</a>
-					<a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
+					<a class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
+							class="bx bx-power-off font-size-17 align-middle me-1 text-danger"></i> Sign Out</a>
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+						@csrf
+					</form>
 				</div>
 			</div>
 		</div>
-		<!--end::Header-->
-		<!--begin::Separator-->
-		<div class="separator separator-dashed mt-8 mb-5"></div>
-		<!--end::Separator-->
-		<!--begin::Nav-->
+
+		{{-- <div class="separator separator-dashed mt-8 mb-5"></div>
 		<div class="navi navi-spacer-x-0 p-0">
-			<!--begin::Item-->
 			<a href="custom/apps/user/profile-1/personal-information.html" class="navi-item">
 				<div class="navi-link">
 					<div class="symbol symbol-40 bg-light mr-3">
@@ -73,8 +68,6 @@
 					</div>
 				</div>
 			</a>
-			<!--end:Item-->
-			<!--begin::Item-->
 			<a href="custom/apps/user/profile-3.html" class="navi-item">
 				<div class="navi-link">
 					<div class="symbol symbol-40 bg-light mr-3">
@@ -100,8 +93,6 @@
 					</div>
 				</div>
 			</a>
-			<!--end:Item-->
-			<!--begin::Item-->
 			<a href="custom/apps/user/profile-2.html" class="navi-item">
 				<div class="navi-link">
 					<div class="symbol symbol-40 bg-light mr-3">
@@ -125,8 +116,6 @@
 					</div>
 				</div>
 			</a>
-			<!--end:Item-->
-			<!--begin::Item-->
 			<a href="custom/apps/userprofile-1/overview.html" class="navi-item">
 				<div class="navi-link">
 					<div class="symbol symbol-40 bg-light mr-3">
@@ -150,22 +139,14 @@
 					</div>
 				</div>
 			</a>
-			<!--end:Item-->
-		</div>
-		<!--end::Nav-->
-		<!--begin::Separator-->
-		<div class="separator separator-dashed my-7"></div>
-		<!--end::Separator-->
-		<!--begin::Notifications-->
+		</div> --}}
+
+		{{-- <div class="separator separator-dashed my-7"></div>
 		<div>
-			<!--begin:Heading-->
 			<h5 class="mb-5">Recent Notifications</h5>
-			<!--end:Heading-->
-			<!--begin::Item-->
 			<div class="d-flex align-items-center bg-light-warning rounded p-5 gutter-b">
 				<span class="svg-icon svg-icon-warning mr-5">
 					<span class="svg-icon svg-icon-lg">
-						<!--begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg-->
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 								<rect x="0" y="0" width="24" height="24" />
@@ -173,7 +154,6 @@
 								<rect fill="#000000" opacity="0.3" transform="translate(17.825568, 11.945519) rotate(-19.000000) translate(-17.825568, -11.945519)" x="16.3255682" y="2.94551858" width="3" height="18" rx="1" />
 							</g>
 						</svg>
-						<!--end::Svg Icon-->
 					</span>
 				</span>
 				<div class="d-flex flex-column flex-grow-1 mr-2">
@@ -182,12 +162,10 @@
 				</div>
 				<span class="font-weight-bolder text-warning py-1 font-size-lg">+28%</span>
 			</div>
-			<!--end::Item-->
-			<!--begin::Item-->
+
 			<div class="d-flex align-items-center bg-light-success rounded p-5 gutter-b">
 				<span class="svg-icon svg-icon-success mr-5">
 					<span class="svg-icon svg-icon-lg">
-						<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg-->
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 								<rect x="0" y="0" width="24" height="24" />
@@ -195,7 +173,6 @@
 								<path d="M12.9,2 C13.4522847,2 13.9,2.44771525 13.9,3 C13.9,3.55228475 13.4522847,4 12.9,4 L6,4 C4.8954305,4 4,4.8954305 4,6 L4,18 C4,19.1045695 4.8954305,20 6,20 L18,20 C19.1045695,20 20,19.1045695 20,18 L20,13 C20,12.4477153 20.4477153,12 21,12 C21.5522847,12 22,12.4477153 22,13 L22,18 C22,20.209139 20.209139,22 18,22 L6,22 C3.790861,22 2,20.209139 2,18 L2,6 C2,3.790861 3.790861,2 6,2 L12.9,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
 							</g>
 						</svg>
-						<!--end::Svg Icon-->
 					</span>
 				</span>
 				<div class="d-flex flex-column flex-grow-1 mr-2">
@@ -204,12 +181,10 @@
 				</div>
 				<span class="font-weight-bolder text-success py-1 font-size-lg">+50%</span>
 			</div>
-			<!--end::Item-->
-			<!--begin::Item-->
+
 			<div class="d-flex align-items-center bg-light-danger rounded p-5 gutter-b">
 				<span class="svg-icon svg-icon-danger mr-5">
 					<span class="svg-icon svg-icon-lg">
-						<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Group-chat.svg-->
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 								<rect x="0" y="0" width="24" height="24" />
@@ -217,7 +192,6 @@
 								<path d="M1.98505595,18 L1.98505595,13 C1.98505595,11.8954305 2.88048645,11 3.98505595,11 L11.9850559,11 C13.0896254,11 13.9850559,11.8954305 13.9850559,13 L13.9850559,18 C13.9850559,19.1045695 13.0896254,20 11.9850559,20 L4.10078614,20 L2.85693427,21.1905292 C2.65744295,21.3814685 2.34093638,21.3745358 2.14999706,21.1750444 C2.06092565,21.0819836 2.01120804,20.958136 2.01120804,20.8293182 L2.01120804,18.32426 C1.99400175,18.2187196 1.98505595,18.1104045 1.98505595,18 Z M6.5,14 C6.22385763,14 6,14.2238576 6,14.5 C6,14.7761424 6.22385763,15 6.5,15 L11.5,15 C11.7761424,15 12,14.7761424 12,14.5 C12,14.2238576 11.7761424,14 11.5,14 L6.5,14 Z M9.5,16 C9.22385763,16 9,16.2238576 9,16.5 C9,16.7761424 9.22385763,17 9.5,17 L11.5,17 C11.7761424,17 12,16.7761424 12,16.5 C12,16.2238576 11.7761424,16 11.5,16 L9.5,16 Z" fill="#000000" opacity="0.3" />
 							</g>
 						</svg>
-						<!--end::Svg Icon-->
 					</span>
 				</span>
 				<div class="d-flex flex-column flex-grow-1 mr-2">
@@ -226,12 +200,10 @@
 				</div>
 				<span class="font-weight-bolder text-danger py-1 font-size-lg">-27%</span>
 			</div>
-			<!--end::Item-->
-			<!--begin::Item-->
+
 			<div class="d-flex align-items-center bg-light-info rounded p-5">
 				<span class="svg-icon svg-icon-info mr-5">
 					<span class="svg-icon svg-icon-lg">
-						<!--begin::Svg Icon | path:assets/media/svg/icons/General/Attachment2.svg-->
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 								<rect x="0" y="0" width="24" height="24" />
@@ -241,7 +213,6 @@
 								<path d="M17.9142136,15.4497475 C18.4664983,15.4497475 18.9142136,15.8974627 18.9142136,16.4497475 L18.9142136,18.4497475 C18.9142136,19.0020322 18.4664983,19.4497475 17.9142136,19.4497475 C17.3619288,19.4497475 16.9142136,19.0020322 16.9142136,18.4497475 L16.9142136,16.4497475 C16.9142136,15.8974627 17.3619288,15.4497475 17.9142136,15.4497475 Z M23.4497475,17.1568542 C23.8402718,17.5473785 23.8402718,18.1805435 23.4497475,18.5710678 L22.0355339,19.9852814 C21.6450096,20.3758057 21.0118446,20.3758057 20.6213203,19.9852814 C20.2307961,19.5947571 20.2307961,18.9615921 20.6213203,18.5710678 L22.0355339,17.1568542 C22.4260582,16.76633 23.0592232,16.76633 23.4497475,17.1568542 Z M12.6213203,17.1568542 C13.0118446,16.76633 13.6450096,16.76633 14.0355339,17.1568542 L15.4497475,18.5710678 C15.8402718,18.9615921 15.8402718,19.5947571 15.4497475,19.9852814 C15.0592232,20.3758057 14.4260582,20.3758057 14.0355339,19.9852814 L12.6213203,18.5710678 C12.2307961,18.1805435 12.2307961,17.5473785 12.6213203,17.1568542 Z" fill="#000000" opacity="0.3" transform="translate(18.035534, 17.863961) scale(1, -1) rotate(45.000000) translate(-18.035534, -17.863961)" />
 							</g>
 						</svg>
-						<!--end::Svg Icon-->
 					</span>
 				</span>
 				<div class="d-flex flex-column flex-grow-1 mr-2">
@@ -250,9 +221,6 @@
 				</div>
 				<span class="font-weight-bolder text-info py-1 font-size-lg">+8%</span>
 			</div>
-			<!--end::Item-->
-		</div>
-		<!--end::Notifications-->
+		</div> --}}
 	</div>
-	<!--end::Content-->
 </div>

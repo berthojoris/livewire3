@@ -7,10 +7,10 @@
 			$about_icon = "menu-icon flaticon-interface-8";
 		@endphp
 
-		<x-link :active="request()->routeIs('home')" href="{{ route('home') }}" :icon="$dashboard_icon">Dashboard</x-link>
-		<x-link :active="request()->routeIs('non_kontrak_index')" href="{{ route('non_kontrak_index') }}" :icon="$contact_icon">Non Kontrak</x-link>
-		<x-link :active="request()->routeIs('kontrak_index')" href="{{ route('kontrak_index') }}" :icon="$contact_icon">Kontrak</x-link>
-		<x-link :active="request()->routeIs('report_index')" href="{{ route('report_index') }}" :icon="$contact_icon">Report</x-link>
+		<x-link :active="request()->is('/')" href="{{ route('home') }}" :icon="$dashboard_icon">Dashboard</x-link>
+		<x-link :active="(request()->is('non-krontrak/*') || request()->is('non-krontrak'))" href="{{ route('non_kontrak_index') }}" :icon="$contact_icon">Non Kontrak</x-link>
+		<x-link :active="(request()->is('kontrak/*') || request()->is('kontrak'))" href="{{ route('kontrak_index') }}" :icon="$contact_icon">Kontrak</x-link>
+		<x-link :active="(request()->is('report/*') || request()->is('report'))" href="{{ route('report_index') }}" :icon="$contact_icon">Report</x-link>
 		{{-- <x-link :active="request()->routeIs('contact')" href="{{ route('contact') }}" :icon="$contact_icon">Contact</x-link>
 		<x-link :active="request()->routeIs('about')" href="{{ route('about') }}" :icon="$about_icon">About</x-link> --}}
 

@@ -3,7 +3,7 @@
 		<div class="card-header flex-wrap border-0 pt-6 pb-0">
 			<div class="card-title">
 				<h3 class="card-label">List Outlet Non Kontrak
-					<span class="d-block text-muted pt-2 font-size-sm">Datatable initialized from HTML table</span>
+					<span class="d-block text-muted pt-2 font-size-sm">Datatable for list outlet yang belum (dalam proses) akuisisi</span>
 				</h3>
 			</div>
 			<div class="card-toolbar">
@@ -96,25 +96,25 @@
 					<tbody style="" class="datatable-body">
 						@foreach ($outlets as $outlet)
 							<tr data-row="0" class="datatable-row" style="left: 0px;">
-								<td data-field="{{ $outlet->outlet_code }}" aria-label="{{ $outlet->outlet_code }}" class="datatable-cell" style="width: 10%;">
+								<td class="datatable-cell" style="width: 10%;">
 									<span>{{ $outlet->outlet_code }}</span>
 								</td>
-								<td data-field="{{ $outlet->outlet_name }}" aria-label="{{ $outlet->outlet_name }}" class="datatable-cell" style="width: 15%;">
+								<td class="datatable-cell" style="width: 15%;">
 									<span>{{ $outlet->outlet_name }}</span>
 								</td>
-								<td data-field="{{ $outlet->horecaGroup->group_name }}" aria-label="{{ $outlet->horecaGroup->group_name }}" class="datatable-cell" style="width: 15%;">
-									<span>{{ $outlet->horecaGroup->group_name }}</span>
+								<td class="datatable-cell" style="width: 15%;">
+									<span>{{ optional($outlet->horecaGroup)->group_name }}</span>
 								</td>
-								<td data-field="{{ $outlet->horecaOutlet->outlet_name }}" aria-label="{{ $outlet->horecaOutlet->outlet_name }}" class="datatable-cell" style="width: 15%;">
-									<span>{{ $outlet->horecaOutlet->outlet_name }}</span>
+								<td class="datatable-cell" style="width: 15%;">
+									<span>{{ optional($outlet->horecaOutlet)->outlet_name }}</span>
 								</td>
-								<td data-field="{{ $outlet->regional->name }}" aria-label="{{ $outlet->regional->name }}" class="datatable-cell" style="width: 10%;">
-									<span>{{ $outlet->regional->name }}</span>
+								<td class="datatable-cell" style="width: 10%;">
+									<span>{{ optional($outlet->regional)->name }}</span>
 								</td>
-								<td data-field="{{ $outlet->statusTracking->status_name }}" aria-label="{{ $outlet->statusTracking->status_name }}" class="datatable-cell" style="width: 10%;">
-									<span>{{ $outlet->statusTracking->status_name }}</span>
+								<td class="datatable-cell" style="width: 10%;">
+									<span>{{ optional($outlet->statusTracking)->status_name }}</span>
 								</td>
-								<td data-field="{{ $outlet->uuid }}" aria-label="{{ $outlet->uuid }}" class="datatable-cell" style="width: 10%;">
+								<td class="datatable-cell" style="width: 10%;">
 									<span><a wire:navigate href="{{ route('non_kontrak_detail', $outlet->uuid) }}">Detail</a></span>
 								</td>
 							</tr>
@@ -122,20 +122,7 @@
 					</tbody>
 				</table>
 
-				{{-- <div class="datatable-pager datatable-paging-loaded">
-					<ul class="datatable-pager-nav my-2 mb-sm-0">
-						<li><a title="First" class="datatable-pager-link datatable-pager-link-first datatable-pager-link-disabled" data-page="1" disabled="disabled"><i class="flaticon2-fast-back"></i></a></li>
-						<li><a title="Previous" class="datatable-pager-link datatable-pager-link-prev datatable-pager-link-disabled" data-page="1" disabled="disabled"><i class="flaticon2-back"></i></a></li>
-						<li style="display: none;"><input type="text" class="datatable-pager-input form-control" title="Page number"></li>
-						<li><a class="datatable-pager-link datatable-pager-link-number datatable-pager-link-active" data-page="1" title="1">1</a></li>
-						<li><a class="datatable-pager-link datatable-pager-link-number" data-page="2" title="2">2</a></li>
-						<li><a class="datatable-pager-link datatable-pager-link-number" data-page="3" title="3">3</a></li>
-						<li><a class="datatable-pager-link datatable-pager-link-number" data-page="4" title="4">4</a></li>
-						<li><a class="datatable-pager-link datatable-pager-link-number" data-page="5" title="5">5</a></li>
-						<li><a title="Next" class="datatable-pager-link datatable-pager-link-next" data-page="2"><i class="flaticon2-next"></i></a></li>
-						<li><a title="Last" class="datatable-pager-link datatable-pager-link-last" data-page="15"><i class="flaticon2-fast-next"></i></a></li>
-					</ul>
-				</div> --}}
+				{{ $outlets->links('paginator') }}
 			</div>
 		</div>
 	</div>

@@ -93,7 +93,7 @@
 					</tbody>
 				</table>
 
-				{{ $this->listKontrak->links() }}
+				{{ $this->listKontrak->onEachSide(1)->links() }}
 			</div>
 		</div>
 	</div>

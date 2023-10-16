@@ -24,12 +24,12 @@ class Outlet extends Model
 
 	public function scopeAkuisisi(Builder $query): void
     {
-        $query->whereNotIn('status', [6, 8, 10, 11, 5, 7]);
+        $query->whereNotIn('status', [6, 8, 10, 11, 5, 7])->orderBy('id', 'desc');
     }
 
 	public function scopeKontrak(Builder $query): void
     {
-        $query->whereNotIn('status', [1, 3, 4]);
+        $query->whereNotIn('status', [1, 3, 4])->orderBy('id', 'desc');
     }
 
 	public function detail()

@@ -3,7 +3,7 @@
 	<ul class="datatable-pager-nav my-2 mb-sm-0 text-end">
         @if (!$paginator->onFirstPage())
 			<li>
-				<a href="{{ route('kontrak_index') }}" class="datatable-pager-link datatable-pager-link-first" wire:navigate><i class="flaticon2-fast-back"></i></a>
+				<a href="{{ $paginator->url(1) }}" class="datatable-pager-link datatable-pager-link-first" wire:navigate><i class="flaticon2-fast-back"></i></a>
 			</li>
 			<li>
 				<a href="{{ $paginator->previousPageUrl() }}"  class="datatable-pager-link datatable-pager-link-prev" wire:navigate><i class="flaticon2-back"></i></a>

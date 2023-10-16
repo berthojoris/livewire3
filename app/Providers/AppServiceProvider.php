@@ -6,6 +6,7 @@ use App\Models\Outlet;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppServiceProvider extends ServiceProvider
@@ -52,5 +53,9 @@ class AppServiceProvider extends ServiceProvider
         });
 
 		JsonResource::withoutWrapping();
+
+		Builder::macro('whereLike', function($column, $search) {
+			return $this->where($column, 'LIKE', "%{$search}%");
+		});
     }
 }

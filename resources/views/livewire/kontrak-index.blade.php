@@ -56,18 +56,11 @@
 				<div class="row align-items-center">
 					<div class="col-lg-9 col-xl-8">
 						<div class="row align-items-center">
-							<div class="col-md-4 my-2 my-md-0">
-								<div class="input-icon">
-									<input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query">
-									<span>
-									<i class="flaticon2-search-1 text-muted"></i>
-									</span>
-								</div>
-							</div>
+							<x-table-seach />
 							<div class="col-md-4 my-2 my-md-0">
 								<div class="d-flex align-items-center">
 									<label class="mr-3 mb-0 d-none d-md-block">Status:</label>
-									<select class="form-control" id="filter_status">
+									<select class="form-control" wire:model.live="status">
 										<option value="">-- ALL --</option>
 										@foreach ($statuses as $key => $val)
 											<option value="{{ $key }}">{{ $val }}</option>
@@ -94,35 +87,13 @@
 						</tr>
 					</thead>
 					<tbody style="" class="datatable-body">
-						@foreach ($outlets as $outlet)
-							<tr data-row="0" class="datatable-row" style="left: 0px;">
-								<td class="datatable-cell" style="width: 10%;">
-									<span>{{ $outlet->outlet_code }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 15%;">
-									<span>{{ $outlet->outlet_name }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 15%;">
-									<span>{{ optional($outlet->horecaGroup)->group_name }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 15%;">
-									<span>{{ optional($outlet->horecaOutlet)->outlet_name }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 10%;">
-									<span>{{ optional($outlet->regional)->name }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 10%;">
-									<span>{{ optional($outlet->statusTracking)->status_name }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 10%;">
-									<span><a wire:navigate href="{{ route('kontrak_detail', $outlet->uuid) }}">Detail</a></span>
-								</td>
-							</tr>
+						@foreach ($this->listKontrak as $outlet)
+							<x-kontrak.list-kontrak :outlet="$outlet" />
 						@endforeach
 					</tbody>
 				</table>
 
-				{{ $outlets->links('paginator2') }}
+				{{ $this->listKontrak->links('paginator2') }}
 			</div>
 		</div>
 	</div>

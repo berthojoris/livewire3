@@ -93,7 +93,7 @@
 					</tbody>
 				</table>
 
-				{{ $this->listKontrak->links('paginator2') }}
+				{{ $this->listKontrak->links() }}
 			</div>
 		</div>
 	</div>

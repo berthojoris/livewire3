@@ -27,6 +27,11 @@ class KontrakIndex extends Component
 		]);
     }
 
+	public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
 	#[Computed()]
 	public function listKontrak()
 	{

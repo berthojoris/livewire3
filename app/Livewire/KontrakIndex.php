@@ -18,6 +18,10 @@ class KontrakIndex extends Component
 	public $search = "";
 	public $status = "";
 
+	public $name = "";
+	public $email = "";
+	public $course = "";
+
     public function render()
     {
 		$statuses = StatusTracking::pluck('status_name', 'id');
@@ -25,6 +29,18 @@ class KontrakIndex extends Component
         return view('livewire.kontrak-index', [
 			'statuses' => $statuses
 		]);
+    }
+
+	public function closeModal()
+	{
+		$this->resetInput();
+	}
+
+	public function resetInput()
+    {
+        $this->name = '';
+        $this->email = '';
+        $this->course = '';
     }
 
 	public function updatingSearch()

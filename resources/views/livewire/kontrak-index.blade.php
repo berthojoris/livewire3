@@ -36,7 +36,7 @@
 					</div>
 				</div>
 
-				<a href="#" class="btn btn-primary font-weight-bolder">
+				<a href="#" class="btn btn-primary font-weight-bolder" data-bs-toggle="modal" data-bs-target="#createOutlet">
 					<span class="svg-icon svg-icon-md">
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -97,4 +97,6 @@
 			</div>
 		</div>
 	</div>
+
+	<x-modals.create-outlet />
 </div>

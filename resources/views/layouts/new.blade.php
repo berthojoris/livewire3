@@ -7,8 +7,6 @@
 	<meta name="description" content="{{ env('APP_DESC') }}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
-	<link href="{{ asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet"
-		type="text/css" />
 	<link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
@@ -36,6 +34,9 @@
 	<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 	<script src="{{ asset('assets/plugins/custom/prismjs/prismjs.bundle.js') }}"></script>
 	<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

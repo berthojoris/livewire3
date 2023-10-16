@@ -93,7 +93,7 @@
 					</tbody>
 				</table>
 
-				{{ $this->listKontrak->onEachSide(1)->links() }}
+				{{ $this->listKontrak->onEachSide(1)->links('vendor.livewire.custom') }}
 			</div>
 		</div>
 	</div>

@@ -3,11 +3,11 @@
 	<ul class="datatable-pager-nav my-2 mb-sm-0 text-end">
         @if ($paginator->onFirstPage())
 			<li>
-				<a href="{{ $paginator->previousPageUrl() }}" wire:navigate class="datatable-pager-link datatable-pager-link-prev datatable-pager-link-disabled"><i class="flaticon2-back"></i></a>
+				<a href="{{ $paginator->previousPageUrl() }}" wire:navigate class="datatable-pager-link datatable-pager-link-prev datatable-pager-link-disabled">Prev</a>
 			</li>
 		@else
 			<li>
-				<a href="{{ $paginator->previousPageUrl() }}" wire:navigate class="datatable-pager-link datatable-pager-link-prev"><i class="flaticon2-back"></i></a>
+				<a href="{{ $paginator->previousPageUrl() }}" wire:navigate class="datatable-pager-link datatable-pager-link-prev">Prev</a>
 			</li>
 		@endif
 
@@ -47,11 +47,11 @@
 
         @if ($paginator->hasMorePages())
             <li>
-				<a href="{{ $paginator->nextPageUrl() }}" class="datatable-pager-link datatable-pager-link-next active" wire:navigate><i class="flaticon2-next"></i></a>
+				<a href="{{ $paginator->nextPageUrl() }}" class="datatable-pager-link datatable-pager-link-next active" wire:navigate>Next</a>
 			</li>
 		@else
 			<li>
-				<a href="{{ $paginator->nextPageUrl() }}" class="datatable-pager-link datatable-pager-link-next datatable-pager-link-disabled" wire:navigate><i class="flaticon2-next"></i></a>
+				<a href="{{ $paginator->nextPageUrl() }}" class="datatable-pager-link datatable-pager-link-next datatable-pager-link-disabled" wire:navigate>Next</a>
 			</li>
         @endif
     </ul>

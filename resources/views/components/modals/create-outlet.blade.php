@@ -49,14 +49,19 @@
 					<div class="row mb-3">
 						<label for="horecataiment_group_type" class="col-lg-5 col-form-label">Horecataiment Group Type <x-asteriks /></label>
 						<div class="col-lg-7">
-							@php
+							{{-- @php
 							echo Form::select('horecataiment_group_type', $horecagrouptype, '', [
 								'placeholder' => '-- Pilih --',
 								'class' => 'form-control',
-								'id' => 'horecataiment_group_type',
-								'wire:model.live' => 'form.horecataiment_group_type'
+								'wire:model' => 'form.horecataiment_group_type'
 							]);
-							@endphp
+							@endphp --}}
+							<select class="form-control" wire:model.live='form.horecataiment_group_type'>
+								<option value="">-- Pilih --</option>
+								@foreach ($horecagrouptype as $key => $val)
+									<option value="{{ $key }}">{{ $val }}</option>
+								@endforeach
+							</select>
 							@error('form.horecataiment_group_type')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -287,7 +292,6 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal" @click="$dispatch('close-modal')">Close</button>
 					<button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
 				</div>
 			</form>

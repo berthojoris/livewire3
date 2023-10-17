@@ -31,6 +31,11 @@ class NonKontrakIndex extends Component
 		$this->js('alert("Saved")');
 	}
 
+	public function updatedFormHorecataimentGroupType()
+    {
+        logger($this->form->horecataiment_group_type);
+    }
+
     public function render()
     {
         return view('livewire.non-kontrak-index', [

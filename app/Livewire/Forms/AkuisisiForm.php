@@ -7,10 +7,10 @@ use Livewire\Form;
 
 class AkuisisiForm extends Form
 {
-	#[Rule('required')]
+	#[Rule('nullable')]
     public $tp_code = '';
 
-	#[Rule('required')]
+	#[Rule('nullable')]
 	public $outlet_code = '';
 
 	#[Rule('required')]
@@ -31,13 +31,13 @@ class AkuisisiForm extends Form
 	#[Rule('required')]
 	public $alamat = '';
 
-	#[Rule('required')]
+	#[Rule('nullable')]
 	public $kecamatan = '';
 
-	#[Rule('required')]
+	#[Rule('nullable')]
 	public $kelurahan = '';
 
-	#[Rule('required')]
+	#[Rule('nullable')]
 	public $kabupaten_kota = '';
 
 	#[Rule('required')]
@@ -49,10 +49,10 @@ class AkuisisiForm extends Form
 	#[Rule('required')]
 	public $telp_pic_outlet = '';
 
-	#[Rule('required')]
+	#[Rule('nullable')]
 	public $telp_pic_outlet_second = '';
 
-	#[Rule('required')]
+	#[Rule('email')]
 	public $email_pic_outlet = '';
 
 	#[Rule('required')]

@@ -28,13 +28,13 @@ class NonKontrakIndex extends Component
 		$this->form->store();
 
 		$this->dispatch('close-modal');
-		$this->js('alert("Yeay")');
+		$this->js('alert("Saved")');
 	}
 
     public function render()
     {
 		$statuses = StatusTracking::pluck('status_name', 'id');
-		$brands = Brand::where('status', 'ACTIVE')->get();
+		$brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
 		$regional_office = Regional::pluck('name', 'id');
 		$horeca_group_type = HorecataimentGroupType::pluck('group_name', 'id');
 
@@ -48,7 +48,7 @@ class NonKontrakIndex extends Component
 
 	public function closeModal()
 	{
-		$this->resetInput();
+		$this->form->resetPage();
 		$this->dispatch('close-modal');
 	}
 

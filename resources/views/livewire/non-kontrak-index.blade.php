@@ -111,6 +111,7 @@
 @section('script')
 <script>
     window.addEventListener('close-modal', event => {
+		$('.text-danger').hide();
         $('#createOutlet').modal('hide');
     })
 </script>

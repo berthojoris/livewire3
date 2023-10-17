@@ -1,4 +1,4 @@
-<div wire:ignore class="modal fade" id="createOutlet" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div wire:ignore.self class="modal fade" id="createOutlet" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -171,12 +171,13 @@
 					<div class="row mb-3">
 						<label for="brand_sugestion" class="col-lg-5 col-form-label">Brand Sugestion <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" id="brand_sugestion" name="brand_sugestion" wire:model='form.brand_sugestion'>
-								<option value="">-- Pilih --</option>
-								@foreach ($brands as $brand)
-									<option value="{{ $brand->merek }}">{{ $brand->merek }}</option>
-								@endforeach
-							</select>
+							@php
+							echo Form::select('brand_sugestion', $brands, '', [
+								'placeholder' => '-- Pilih --',
+								'class' => 'form-control',
+								'wire:model' => 'form.brand_sugestion'
+							]);
+							@endphp
 							@error('form.brand_sugestion')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>

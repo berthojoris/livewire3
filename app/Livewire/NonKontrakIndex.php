@@ -7,42 +7,29 @@ use App\Models\Outlet;
 use Livewire\Component;
 use App\Models\Regional;
 use Livewire\WithPagination;
-use Livewire\Attributes\Rule;
 use App\Models\StatusTracking;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
+use App\Livewire\Forms\AkuisisiForm;
 use App\Models\HorecataimentGroupType;
 #[Title('Non Kontrak')]
 
 class NonKontrakIndex extends Component
 {
+	use WithPagination;
+
 	public $search = "";
 	public $status = "";
 
-	#[Rule(['required'])]
-	public $tp_code = "";
+	public AkuisisiForm $form;
 
-	public $outlet_code = "";
-	public $outlet_name = "";
-	public $horecataiment_group_type = [];
-	public $horecataiment_outlet_type = [];
-	public $ro = [];
-	public $ao = [];
-	public $alamat = "";
-	public $kecamatan = "";
-	public $kelurahan = "";
-	public $kabupaten_kota = "";
-	public $brand_sugestion = [];
-	public $nama_pic_outlet = "";
-	public $telp_pic_outlet = "";
-	public $telp_pic_outlet_second = "";
-	public $email_pic_outlet = "";
-	public $instalasi_branding = "";
-	public $kontrak_event = "";
-	public $selling = "";
+	public function createNewOutlet()
+	{
+		$this->form->store();
 
-
-	use WithPagination;
+		$this->dispatch('close-modal');
+		$this->js('alert("Yeay")');
+	}
 
     public function render()
     {
@@ -65,29 +52,6 @@ class NonKontrakIndex extends Component
 		$this->dispatch('close-modal');
 	}
 
-	public function resetInput()
-    {
-        $this->tp_code = "";
-        $this->outlet_code = "";
-        $this->outlet_name = "";
-        $this->horecataiment_group_type = [];
-        $this->horecataiment_outlet_type = [];
-        $this->ro = [];
-        $this->ao = [];
-        $this->alamat = "";
-        $this->kecamatan = "";
-        $this->kelurahan = "";
-        $this->kabupaten_kota = "";
-        $this->brand_sugestion = [];
-        $this->nama_pic_outlet = "";
-        $this->telp_pic_outlet = "";
-        $this->telp_pic_outlet_second = "";
-        $this->email_pic_outlet = "";
-        $this->instalasi_branding = "";
-        $this->kontrak_event = "";
-        $this->selling = "";
-    }
-
 	#[Computed()]
 	public function listKontrak()
 	{
@@ -106,39 +70,5 @@ class NonKontrakIndex extends Component
 		})->paginate(10);
 
 		return $query;
-	}
-
-	protected function rules()
-    {
-        return [
-            'tp_code' => 'nullable',
-			'outlet_code' => 'nullable',
-			'outlet_name' => 'required',
-			'horecataiment_group_type' => 'required',
-			'horecataiment_outlet_type' => 'required',
-			'ro' => 'required',
-			'ao' => 'required',
-			'alamat' => 'required',
-			'kecamatan' => 'required',
-			'kelurahan' => 'required',
-			'kabupaten_kota' => 'required',
-			'brand_sugestion' => 'required',
-			'nama_pic_outlet' => 'required',
-			'telp_pic_outlet' => 'required',
-			'telp_pic_outlet_second' => 'nullable',
-			'instalasi_branding' => 'nullable',
-			'kontrak_event' => 'nullable',
-			'selling' => 'nullable',
-            'email_pic_outlet' => ['nullable','email'],
-        ];
-    }
-
-	public function save()
-	{
-		$validatedData = $this->validate();
-
-		$this->resetInput();
-        $this->dispatchBrowserEvent('close-modal');
-		$this->js("alert('yeah')");
 	}
 }

@@ -69,7 +69,7 @@
 									<label class="mr-3 mb-0 d-none d-md-block">Status:</label>
 									<select class="form-control" id="filter_status">
 										<option value="">-- ALL --</option>
-										@foreach ($this->statuses as $key => $val)
+										@foreach ($statuses as $key => $val)
 											<option value="{{ $key }}">{{ $val }}</option>
 										@endforeach
 									</select>
@@ -105,7 +105,7 @@
 		</div>
 	</div>
 
-	<x-modals.create-outlet :horecagrouptype="$this->horecataiment_group_type" :brands="$this->brands" :regionaloffice="$this->regional_office" />
+	<x-modals.create-outlet :horecagrouptype="$horecataiment_group_type" :brands="$brands" :regionaloffice="$regional_office" />
 </div>
 
 @section('script')

@@ -54,7 +54,7 @@
 								'placeholder' => '-- Pilih --',
 								'class' => 'form-control',
 								'id' => 'horecataiment_group_type',
-								'wire:model' => 'form.horecataiment_group_type'
+								'wire:model.live' => 'form.horecataiment_group_type'
 							]);
 							@endphp
 							@error('form.horecataiment_group_type')

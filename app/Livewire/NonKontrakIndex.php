@@ -31,19 +31,17 @@ class NonKontrakIndex extends Component
 		$this->js('alert("Saved")');
 	}
 
+	public function mount()
+	{
+		$this->horecataiment_group_type = HorecataimentGroupType::pluck('group_name', 'id');
+		$this->brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
+		$this->regional_office = Regional::pluck('name', 'id');
+		$this->statuses = StatusTracking::pluck('status_name', 'id');
+	}
+
     public function render()
     {
-		$statuses = StatusTracking::pluck('status_name', 'id');
-		$brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
-		$regional_office = Regional::pluck('name', 'id');
-		$horeca_group_type = HorecataimentGroupType::pluck('group_name', 'id');
-
-        return view('livewire.non-kontrak-index', [
-			'statuses' => $statuses,
-			'horeca_group_type' => $horeca_group_type,
-			'brands' => $brands,
-			'regional_office' => $regional_office
-		]);
+        return view('livewire.non-kontrak-index');
     }
 
 	public function closeModal()

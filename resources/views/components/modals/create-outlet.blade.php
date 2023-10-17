@@ -1,4 +1,4 @@
-<div wire:ignore class="modal fade" id="createOutlet" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div wire:ignore class="modal fade" id="createOutlet" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -9,7 +9,7 @@
 				</button>
             </div>
 
-            <form wire:submit.prevent="saveStudent">
+            <form wire:submit="saveStudent">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label>Student Name</label>

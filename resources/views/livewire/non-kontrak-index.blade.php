@@ -36,7 +36,7 @@
 					</div>
 				</div>
 
-				<a href="#" class="btn btn-primary font-weight-bolder">
+				<a href="#" class="btn btn-primary font-weight-bolder" data-bs-toggle="modal" data-bs-target="#createOutlet">
 					<span class="svg-icon svg-icon-md">
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -94,36 +94,16 @@
 						</tr>
 					</thead>
 					<tbody style="" class="datatable-body">
-						@foreach ($outlets as $outlet)
-							<tr data-row="0" class="datatable-row" style="left: 0px;">
-								<td class="datatable-cell" style="width: 10%;">
-									<span>{{ $outlet->outlet_code }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 15%;">
-									<span>{{ $outlet->outlet_name }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 15%;">
-									<span>{{ optional($outlet->horecaGroup)->group_name }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 15%;">
-									<span>{{ optional($outlet->horecaOutlet)->outlet_name }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 10%;">
-									<span>{{ optional($outlet->regional)->name }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 10%;">
-									<span>{{ optional($outlet->statusTracking)->status_name }}</span>
-								</td>
-								<td class="datatable-cell" style="width: 10%;">
-									<span><a wire:navigate href="{{ route('non_kontrak_detail', $outlet->uuid) }}">Detail</a></span>
-								</td>
-							</tr>
+						@foreach ($this->listKontrak as $outlet)
+							<x-kontrak.list-kontrak :outlet="$outlet" />
 						@endforeach
 					</tbody>
 				</table>
 
-				{{ $outlets->links('paginator') }}
+				{{ $this->listKontrak->onEachSide(1)->links() }}
 			</div>
 		</div>
 	</div>
+
+	<x-modals.create-outlet />
 </div>

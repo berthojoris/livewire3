@@ -105,5 +105,13 @@
 		</div>
 	</div>
 
-	<x-modals.create-outlet />
+	<x-modals.create-outlet :horecagrouptype="$horeca_group_type" :brands="$brands" :regionaloffice="$regional_office" />
 </div>
+
+@section('script')
+<script>
+    window.addEventListener('close-modal', event => {
+        $('#createOutlet').modal('hide');
+    })
+</script>
+@endsection

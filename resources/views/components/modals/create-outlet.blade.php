@@ -285,7 +285,7 @@
 					<div wire:loading wire:target="createNewOutlet">
 						<div class="spinner spinner-success mr-15"></div>
 					</div>
-					<button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
+					<button type="submit" class="btn btn-primary font-weight-bold">Create</button>
 				</div>
 			</form>
 		</div>

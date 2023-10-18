@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Livewire\Attributes\Rule;
 use App\Models\HorecataimentGroupType;
 use App\Models\HorecataimentOutletType;
 

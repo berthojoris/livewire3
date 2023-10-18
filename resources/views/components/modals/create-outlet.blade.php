@@ -1,4 +1,4 @@
-<div wire:ignore.self class="modal fade" id="createOutlet" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div wire:ignore.self class="modal fade" id="createOutlet" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">

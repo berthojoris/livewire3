@@ -13,7 +13,7 @@
 					<div class="row mb-3">
 						<label for="tp_code" class="col-lg-5 col-form-label">TP Code</label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control" autocomplete="off" wire:model.live='form.tp_code'>
+							<input type="text" class="form-control" autocomplete="off" wire:model='form.tp_code'>
 							@error('form.tp_code')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>

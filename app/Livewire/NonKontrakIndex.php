@@ -21,6 +21,8 @@ class NonKontrakIndex extends Component
 
 	public $search = "";
 	public $status = "";
+	public $category;
+	public $subcategories = [];
 
 	public AkuisisiForm $form;
 

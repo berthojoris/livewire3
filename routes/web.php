@@ -27,9 +27,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/post', App\Livewire\PostIndex::class)->name('post');
     Route::get('/post/detail/{id}', App\Livewire\BlogOpenDetail::class)->name('blog_open_detail');
+	Route::get('/dropdown', App\Livewire\Dropdown::class)->name('dropdown');
 
 	Route::get('/report', App\Livewire\ReportIndex::class)->name('report_index');
 	Route::get('/user', App\Livewire\UserIndex::class)->name('user_index');
-
-	Route::get('/blog', App\Livewire\PostIndex::class)->name('post');
 });

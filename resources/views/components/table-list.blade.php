@@ -13,7 +13,7 @@
 				<td>{{ $blog->title }}</td>
 				<td>{{ $blog->body }}</td>
 				<td>
-					<button class="btn btn-info" wire:click='detail({{ $blog->id }})'>Detail</button>
+					<a class="btn btn-info" href="{{ route('blog_open_detail', $blog->id) }}" wire:navigate>Open Detail</a>
 					<button class="btn btn-danger" wire:click='remove({{ $blog->id }})'>Delete</button>
 				</td>
 			</tr>

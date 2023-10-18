@@ -9,7 +9,6 @@
 			</div>
 
 			<div class="modal-body" style="height: 500px;">
-
 				<ul class="nav nav-tabs nav-tabs-line">
 					<li class="nav-item">
 						<a class="nav-link active" data-toggle="tab" href="#tab_data_outlet">
@@ -51,7 +50,6 @@
 						<x-nonkontrak.tab-data-validasi />
 					</div>
 				</div>
-
 			</div>
 		</div>
     </div>

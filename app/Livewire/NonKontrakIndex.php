@@ -170,4 +170,10 @@ class NonKontrakIndex extends Component
 
 		return $query;
 	}
+
+	#[Computed()]
+	public function dataOutlet()
+	{
+		$query = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->firstOrFail();
+	}
 }

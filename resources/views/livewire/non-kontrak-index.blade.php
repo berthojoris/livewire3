@@ -95,7 +95,7 @@
 					</thead>
 					<tbody style="" class="datatable-body">
 						@foreach ($this->listKontrak as $outlet)
-							<x-kontrak.list-kontrak :outlet="$outlet" />
+							<x-nonkontrak.list-kontrak :outlet="$outlet" />
 						@endforeach
 					</tbody>
 				</table>

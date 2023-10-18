@@ -6,11 +6,12 @@ use App\Models\Brand;
 use App\Models\Outlet;
 use Livewire\Component;
 use App\Models\Regional;
+use App\Models\AreaOffice;
 use Livewire\WithPagination;
+use Livewire\Attributes\Rule;
 use App\Models\StatusTracking;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
-use App\Livewire\Forms\AkuisisiForm;
 use App\Models\HorecataimentGroupType;
 use App\Models\HorecataimentOutletType;
 #[Title('Non Kontrak')]
@@ -21,36 +22,110 @@ class NonKontrakIndex extends Component
 
 	public $search = "";
 	public $status = "";
-	public $category;
+
+	public $categories;
 	public $subcategories = [];
 
-	public AkuisisiForm $form;
+	public $dataro;
+	public $dataao = [];
+
+	#[Rule('nullable')]
+    public $tp_code = '';
+
+	#[Rule('nullable')]
+	public $outlet_code = '';
+
+	#[Rule('required')]
+	public $outlet_name = '';
+
+	#[Rule('required')]
+	public $horecataiment_group_type = '';
+
+	#[Rule('required')]
+	public $horecataiment_outlet_type = '';
+
+	#[Rule('required')]
+	public $ro = '';
+
+	#[Rule('required')]
+	public $ao = '';
+
+	#[Rule('required')]
+	public $alamat = '';
+
+	#[Rule('nullable')]
+	public $kecamatan = '';
+
+	#[Rule('nullable')]
+	public $kelurahan = '';
+
+	#[Rule('nullable')]
+	public $kabupaten_kota = '';
+
+	#[Rule('required')]
+	public $brand_sugestion = '';
+
+	#[Rule('required')]
+	public $nama_pic_outlet = '';
+
+	#[Rule('required|regex:/^[0-9]+$/')]
+	public $telp_pic_outlet = '';
+
+	#[Rule('nullable')]
+	public $telp_pic_outlet_second = '';
+
+	#[Rule('email')]
+	public $email_pic_outlet = '';
+
+	#[Rule('nullable')]
+	public $instalasi_branding = '';
+
+	#[Rule('nullable')]
+	public $kontrak_event = '';
+
+	#[Rule('nullable')]
+	public $selling = '';
 
 	public function createNewOutlet()
 	{
-		$this->form->store();
+		$validated = $this->validate();
 
 		$this->dispatch('close-modal');
 		$this->js('alert("Saved")');
 	}
 
-	// public function updatedFormHorecataimentGroupType()
-    // {
-	// 	$this->form->horecataiment_outlet_type = collect();
+	public function mount()
+    {
+        $this->categories = HorecataimentGroupType::pluck('group_name', 'id');
+        $this->subcategories = collect();
 
-    //     if(is_null($this->form->horecataiment_group_type) || $this->form->horecataiment_group_type == "") {
-	// 		$this->form->horecataiment_outlet_type = HorecataimentOutletType::where('horecataiment_group_type_id', $this->form->horecataiment_group_type)->pluck('group_name', 'id');
-	// 	}
-	// 	logger("hehe");
-    // }
+		$this->dataro = Regional::pluck('name', 'id');
+        $this->dataao = collect();
+    }
+
+	public function updatedHorecataimentGroupType($value)
+    {
+		if(is_null($value)) {
+			$this->subcategories = collect();
+		} else {
+			$this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $value)->pluck('outlet_name', 'id');
+		}
+    }
+
+	public function updatedRo($value)
+    {
+		if(is_null($value)) {
+			$this->dataao = collect();
+		} else {
+			$this->dataao = AreaOffice::where('regional_id', $value)->pluck('name', 'id');
+		}
+    }
 
     public function render()
     {
         return view('livewire.non-kontrak-index', [
 			'statuses' => StatusTracking::pluck('status_name', 'id'),
-			'horecataiment_group_type' => HorecataimentGroupType::pluck('group_name', 'id'),
 			'brands' => Brand::where('status', 'ACTIVE')->pluck('merek', 'id'),
-			'regional_office' => Regional::pluck('name', 'id')
 		]);
     }
 

@@ -13,8 +13,8 @@
 					<div class="row mb-3">
 						<label for="tp_code" class="col-lg-5 col-form-label">TP Code</label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control" autocomplete="off" wire:model='form.tp_code'>
-							@error('form.tp_code')
+							<input type="text" class="form-control" autocomplete="off" wire:model='tp_code'>
+							@error('tp_code')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -25,8 +25,8 @@
 					<div class="row mb-3">
 						<label for="outlet_code" class="col-lg-5 col-form-label">Outlet Code</label>
 						<div class="col-lg-7">
-							<input id="outlet_code" name="outlet_code" type="text" class="form-control" autocomplete="off" wire:model='form.outlet_code'>
-							@error('form.outlet_code')
+							<input id="outlet_code" name="outlet_code" type="text" class="form-control" autocomplete="off" wire:model='outlet_code'>
+							@error('outlet_code')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -37,8 +37,8 @@
 					<div class="row mb-3">
 						<label for="outlet_name" class="col-lg-5 col-form-label">Outlet Name <x-asteriks /></label>
 						<div class="col-lg-7">
-							<input id="outlet_name" name="outlet_name" type="text" class="form-control" autocomplete="off" wire:model='form.outlet_name'>
-							@error('form.outlet_name')
+							<input id="outlet_name" name="outlet_name" type="text" class="form-control" autocomplete="off" wire:model='outlet_name'>
+							@error('outlet_name')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -49,13 +49,13 @@
 					<div class="row mb-3">
 						<label for="horecataiment_group_type" class="col-lg-5 col-form-label">Horecataiment Group Type <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model='form.horecataiment_group_type'>
+							<select class="form-control" wire:model.live='horecataiment_group_type'>
 								<option value="">-- Pilih --</option>
-								@foreach ($horecagrouptype as $key => $val)
+								@foreach ($categories as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>
 								@endforeach
 							</select>
-							@error('form.horecataiment_group_type')
+							@error('horecataiment_group_type')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -66,14 +66,13 @@
 					<div class="row mb-3">
 						<label for="horecataiment_outlet_type" class="col-lg-5 col-form-label">Horecataiment Outlet Type <x-asteriks /></label>
 						<div class="col-lg-7">
-							@php
-							echo Form::select('horecataiment_outlet_type', [], '', [
-								'placeholder' => '-- Pilih --',
-								'class' => 'form-control',
-								'wire:model' => 'form.horecataiment_outlet_type'
-							]);
-							@endphp
-							@error('form.horecataiment_outlet_type')
+							<select class="form-control" wire:model='horecataiment_outlet_type'>
+								<option value="">-- Pilih --</option>
+								@foreach ($subcategories as $key => $val)
+									<option value="{{ $key }}">{{ $val }}</option>
+								@endforeach
+							</select>
+							@error('horecataiment_outlet_type')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -84,14 +83,13 @@
 					<div class="row mb-3">
 						<label for="ro" class="col-lg-5 col-form-label">RO <x-asteriks /></label>
 						<div class="col-lg-7">
-							@php
-							echo Form::select('ro', $regionaloffice, '', [
-								'placeholder' => '-- Pilih --',
-								'class' => 'form-control',
-								'wire:model' => 'form.ro'
-							]);
-							@endphp
-							@error('form.ro')
+							<select class="form-control" wire:model.live='ro'>
+								<option value="">-- Pilih --</option>
+								@foreach ($dataro as $key => $val)
+									<option value="{{ $key }}">{{ $val }}</option>
+								@endforeach
+							</select>
+							@error('ro')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -102,14 +100,13 @@
 					<div class="row mb-3">
 						<label for="ao" class="col-lg-5 col-form-label">AO <x-asteriks /></label>
 						<div class="col-lg-7">
-							@php
-							echo Form::select('ao', [], '', [
-								'placeholder' => '-- Pilih --',
-								'class' => 'form-control',
-								'wire:model' => 'form.ao'
-							]);
-							@endphp
-							@error('form.ao')
+							<select class="form-control" wire:model='ao'>
+								<option value="">-- Pilih --</option>
+								@foreach ($dataao as $key => $val)
+									<option value="{{ $key }}">{{ $val }}</option>
+								@endforeach
+							</select>
+							@error('ao')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -120,8 +117,8 @@
 					<div class="row mb-3">
 						<label for="alamat" class="col-lg-5 col-form-label">Alamat <x-asteriks /></label>
 						<div class="col-lg-7">
-							<textarea name="alamat" id="alamat" class="form-control" wire:model='form.alamat'></textarea>
-							@error('form.alamat')
+							<textarea name="alamat" id="alamat" class="form-control" wire:model='alamat'></textarea>
+							@error('alamat')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -132,8 +129,8 @@
 					<div class="row mb-3">
 						<label for="kecamatan" class="col-lg-5 col-form-label">Kecamatan</label>
 						<div class="col-lg-7">
-							<input id="kecamatan" name="kecamatan" type="text" class="form-control" autocomplete="off" wire:model='form.kecamatan'>
-							@error('form.kecamatan')
+							<input id="kecamatan" name="kecamatan" type="text" class="form-control" autocomplete="off" wire:model='kecamatan'>
+							@error('kecamatan')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -144,8 +141,8 @@
 					<div class="row mb-3">
 						<label for="kelurahan" class="col-lg-5 col-form-label">Kelurahan</label>
 						<div class="col-lg-7">
-							<input id="kelurahan" name="kelurahan" type="text" class="form-control" autocomplete="off" wire:model='form.kelurahan'>
-							@error('form.kelurahan')
+							<input id="kelurahan" name="kelurahan" type="text" class="form-control" autocomplete="off" wire:model='kelurahan'>
+							@error('kelurahan')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -156,8 +153,8 @@
 					<div class="row mb-3">
 						<label for="kabupaten_kota" class="col-lg-5 col-form-label">Kabupaten / Kota</label>
 						<div class="col-lg-7">
-							<input id="kabupaten_kota" name="kabupaten_kota" type="text" class="form-control" autocomplete="off" wire:model='form.kabupaten_kota'>
-							@error('form.kabupaten_kota')
+							<input id="kabupaten_kota" name="kabupaten_kota" type="text" class="form-control" autocomplete="off" wire:model='kabupaten_kota'>
+							@error('kabupaten_kota')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -172,10 +169,10 @@
 							echo Form::select('brand_sugestion', $brands, '', [
 								'placeholder' => '-- Pilih --',
 								'class' => 'form-control',
-								'wire:model' => 'form.brand_sugestion'
+								'wire:model' => 'brand_sugestion'
 							]);
 							@endphp
-							@error('form.brand_sugestion')
+							@error('brand_sugestion')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -186,8 +183,8 @@
 					<div class="row mb-3">
 						<label for="nama_pic_outlet" class="col-lg-5 col-form-label">Nama PIC Outlet <x-asteriks /></label>
 						<div class="col-lg-7">
-							<input id="nama_pic_outlet" name="nama_pic_outlet" type="text" class="form-control" autocomplete="off" wire:model='form.nama_pic_outlet'>
-							@error('form.nama_pic_outlet')
+							<input id="nama_pic_outlet" name="nama_pic_outlet" type="text" class="form-control" autocomplete="off" wire:model='nama_pic_outlet'>
+							@error('nama_pic_outlet')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -198,8 +195,8 @@
 					<div class="row mb-3">
 						<label for="telp_pic_outlet" class="col-lg-5 col-form-label">Telp/Hp PIC Outlet <x-asteriks /></label>
 						<div class="col-lg-7">
-							<input id="telp_pic_outlet" name="telp_pic_outlet" type="number" class="form-control numberOnly" autocomplete="off" wire:model='form.telp_pic_outlet'>
-							@error('form.telp_pic_outlet')
+							<input id="telp_pic_outlet" type="number" class="form-control" autocomplete="off" wire:model='telp_pic_outlet'>
+							@error('telp_pic_outlet')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -211,8 +208,8 @@
 						<label for="telp_pic_outlet_second" class="col-lg-5 col-form-label">Telp/Hp PIC Outlet 2
 							(Optional)</label>
 						<div class="col-lg-7">
-							<input id="telp_pic_outlet_second" name="telp_pic_outlet_second" type="number" class="form-control numberOnly" autocomplete="off" wire:model='form.telp_pic_outlet_second'>
-							@error('form.telp_pic_outlet_second')
+							<input id="telp_pic_outlet_second" name="telp_pic_outlet_second" type="number" class="form-control numberOnly" autocomplete="off" wire:model='telp_pic_outlet_second'>
+							@error('telp_pic_outlet_second')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -223,8 +220,8 @@
 					<div class="row mb-3">
 						<label for="email_pic_outlet" class="col-lg-5 col-form-label">Email PIC Outlet</label>
 						<div class="col-lg-7">
-							<input id="email_pic_outlet" name="email_pic_outlet" type="email" class="form-control" autocomplete="off" wire:model='form.email_pic_outlet'>
-							@error('form.email_pic_outlet')
+							<input id="email_pic_outlet" name="email_pic_outlet" type="email" class="form-control" autocomplete="off" wire:model='email_pic_outlet'>
+							@error('email_pic_outlet')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -237,11 +234,11 @@
 						<div class="col-lg-7">
 							<span class="switch switch-icon">
 								<label>
-									<input type="checkbox" name="instalasi_branding" id="instalasi_branding" wire:model='form.instalasi_branding'/>
+									<input type="checkbox" name="instalasi_branding" id="instalasi_branding" wire:model='instalasi_branding'/>
 									<span></span>
 								</label>
 							</span>
-							@error('form.instalasi_branding')
+							@error('instalasi_branding')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -254,11 +251,11 @@
 						<div class="col-lg-7">
 							<span class="switch switch-icon">
 								<label>
-									<input type="checkbox" name="kontrak_event" id="kontrak_event" wire:model='form.kontrak_event'/>
+									<input type="checkbox" name="kontrak_event" id="kontrak_event" wire:model='kontrak_event'/>
 									<span></span>
 								</label>
 							</span>
-							@error('form.kontrak_event')
+							@error('kontrak_event')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
@@ -271,11 +268,11 @@
 						<div class="col-lg-7">
 							<span class="switch switch-icon">
 								<label>
-									<input type="checkbox" name="selling" id="selling" wire:model='form.selling'/>
+									<input type="checkbox" name="selling" id="selling" wire:model='selling'/>
 									<span></span>
 								</label>
 							</span>
-							@error('form.selling')
+							@error('selling')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>

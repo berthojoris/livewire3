@@ -105,7 +105,7 @@
 		</div>
 	</div>
 
-	<x-modals.create-outlet :horecagrouptype="$horecataiment_group_type" :brands="$brands" :regionaloffice="$regional_office" />
+	<x-modals.create-outlet :brands="$brands" :dataro="$dataro" :dataao="$dataao" :categories="$categories" :subcategories="$subcategories" />
 </div>
 
 @section('script')

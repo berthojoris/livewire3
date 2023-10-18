@@ -9,6 +9,7 @@ use App\Models\HorecataimentOutletType;
 class Dropdown extends Component
 {
 	public $categories;
+	public $subcategories = [];
 
     #[Rule('required|min:3')]
     public $name;
@@ -18,8 +19,6 @@ class Dropdown extends Component
 
     #[Rule('required')]
     public $subcategory;
-
-    public $subcategories = [];
 
     public function mount()
     {

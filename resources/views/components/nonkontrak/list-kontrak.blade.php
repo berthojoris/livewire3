@@ -18,6 +18,10 @@
 		<span>{{ optional($outlet->statusTracking)->status_name }}</span>
 	</td>
 	<td class="datatable-cell" style="width: 10%;">
-		<span><a wire:navigate href="{{ route('non_kontrak_detail', $outlet->uuid) }}">Detail</a></span>
+		<span>
+			<a data-bs-toggle="modal" data-bs-target="#akuisisi" href="#">
+				<i aria-hidden="true" class="fas fa-file-alt"></i>
+			</a>
+		</span>
 	</td>
 </tr>

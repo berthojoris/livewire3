@@ -58,7 +58,7 @@
 						<div class="row align-items-center">
 							<div class="col-md-4 my-2 my-md-0">
 								<div class="input-icon">
-									<input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query">
+									<input type="text" class="form-control" placeholder="Search outlet name..." wire:model.live='search'>
 									<span>
 									<i class="flaticon2-search-1 text-muted"></i>
 									</span>
@@ -67,7 +67,7 @@
 							<div class="col-md-4 my-2 my-md-0">
 								<div class="d-flex align-items-center">
 									<label class="mr-3 mb-0 d-none d-md-block">Status:</label>
-									<select class="form-control" id="filter_status">
+									<select class="form-control" id="filter_status" wire:model.live='status'>
 										<option value="">-- ALL --</option>
 										@foreach ($statuses as $key => $val)
 											<option value="{{ $key }}">{{ $val }}</option>
@@ -81,7 +81,7 @@
 			</div>
 
 			<div class="datatable datatable-default datatable-bordered datatable-loaded">
-				<table class="datatable-bordered datatable-head-custom datatable-table" id="kt_datatable" style="display: block;">
+				<table class="datatable-bordered datatable-head-custom datatable-table" id="kt_datatable" style="display: block; text-align: center;">
 					<thead class="datatable-head">
 						<tr class="datatable-row" style="left: 0px;">
 							<th class="datatable-cell datatable-cell-sort" style="width: 10%;"><span>Outlet Code</span></th>
@@ -106,6 +106,8 @@
 	</div>
 
 	<x-modals.create-outlet :brands="$brands" :dataro="$dataro" :dataao="$dataao" :categories="$categories" :subcategories="$subcategories" />
+
+	<x-modals.akuisisi/>
 </div>
 
 @section('script')
@@ -121,6 +123,12 @@ window.addEventListener('saved', event => {
 	$('.text-validation').hide();
 	$('#createOutlet').modal('hide');
 	Swal.fire("Data saved", "You clicked the button!", "success");
+})
+
+window.addEventListener('close-akuisisi', event => {
+	$('.text-danger').hide();
+	$('.text-validation').hide();
+	$('#akuisisi').modal('hide');
 })
 </script>
 @endsection

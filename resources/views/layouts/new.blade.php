@@ -13,8 +13,6 @@
 	<link href="{{ asset('assets/css/themes/layout/brand/dark.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('template/favicon.ico') }}" rel="shortcut icon" />
-    <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
-	<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 	<style>
 		.asteriks {
 			color: red;
@@ -39,6 +37,9 @@
 	@include('partials.kt_chat_modal')
 	@include('partials.sticky_toolbar')
 	@include('partials.kt_demo_panel') --}}
+
+	<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
+	<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 	@yield('script')
 </body>
 

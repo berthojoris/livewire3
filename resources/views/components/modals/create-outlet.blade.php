@@ -3,8 +3,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
-				{{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="$dispatch('close-modal')"> --}}
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click='closeModal'>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="$dispatch('close-modal')">
 					<i aria-hidden="true" class="ki ki-close"></i>
 				</button>
 			</div>
@@ -67,7 +66,7 @@
 					<div class="row mb-3">
 						<label for="horecataiment_outlet_type" class="col-lg-5 col-form-label">Horecataiment Outlet Type <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model='horecataiment_outlet_type'>
+							<select class="form-control" wire:model='horecataiment_outlet_type' id="horecataiment_outlet_type">
 								<option value="">-- Pilih --</option>
 								@foreach ($subcategories as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>
@@ -101,7 +100,7 @@
 					<div class="row mb-3">
 						<label for="ao" class="col-lg-5 col-form-label">AO <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model='ao'>
+							<select class="form-control" wire:model='ao' id="ao">
 								<option value="">-- Pilih --</option>
 								@foreach ($dataao as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>

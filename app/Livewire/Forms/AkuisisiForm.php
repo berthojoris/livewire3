@@ -55,18 +55,18 @@ class AkuisisiForm extends Form
 	#[Rule('email')]
 	public $email_pic_outlet = '';
 
-	#[Rule('required')]
+	#[Rule('nullable')]
 	public $instalasi_branding = '';
 
-	#[Rule('required')]
+	#[Rule('nullable')]
 	public $kontrak_event = '';
 
-	#[Rule('required')]
+	#[Rule('nullable')]
 	public $selling = '';
 
 	public function store()
     {
         $this->validate();
-		$this->reset();
+		// $this->reset();
     }
 }

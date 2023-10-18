@@ -28,7 +28,8 @@ class BlogPost extends Form
     {
         $validated = $this->validate();
         $user = auth()->user();
-        $user->blogs()->create($validated);
+		$validated['user_id'] = $user->id;
+        Blog::create($validated);
         flash('Berhasil menambahkan data', 'success');
         $this->reset();
     }

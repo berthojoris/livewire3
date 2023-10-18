@@ -12,6 +12,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
 use App\Livewire\Forms\AkuisisiForm;
 use App\Models\HorecataimentGroupType;
+use App\Models\HorecataimentOutletType;
 #[Title('Non Kontrak')]
 
 class NonKontrakIndex extends Component
@@ -31,10 +32,15 @@ class NonKontrakIndex extends Component
 		$this->js('alert("Saved")');
 	}
 
-	public function updatedFormHorecataimentGroupType()
-    {
-        logger($this->form->horecataiment_group_type);
-    }
+	// public function updatedFormHorecataimentGroupType()
+    // {
+	// 	$this->form->horecataiment_outlet_type = collect();
+
+    //     if(is_null($this->form->horecataiment_group_type) || $this->form->horecataiment_group_type == "") {
+	// 		$this->form->horecataiment_outlet_type = HorecataimentOutletType::where('horecataiment_group_type_id', $this->form->horecataiment_group_type)->pluck('group_name', 'id');
+	// 	}
+	// 	logger("hehe");
+    // }
 
     public function render()
     {

@@ -30,4 +30,6 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('/report', App\Livewire\ReportIndex::class)->name('report_index');
 	Route::get('/user', App\Livewire\UserIndex::class)->name('user_index');
+
+	Route::get('/blog', App\Livewire\PostIndex::class)->name('post');
 });

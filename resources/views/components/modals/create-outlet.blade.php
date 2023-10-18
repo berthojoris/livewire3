@@ -13,7 +13,7 @@
 					<div class="row mb-3">
 						<label for="tp_code" class="col-lg-5 col-form-label">TP Code</label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control" autocomplete="off" wire:model='form.tp_code'>
+							<input type="text" class="form-control" autocomplete="off" wire:model.live='form.tp_code'>
 							@error('form.tp_code')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -49,14 +49,7 @@
 					<div class="row mb-3">
 						<label for="horecataiment_group_type" class="col-lg-5 col-form-label">Horecataiment Group Type <x-asteriks /></label>
 						<div class="col-lg-7">
-							{{-- @php
-							echo Form::select('horecataiment_group_type', $horecagrouptype, '', [
-								'placeholder' => '-- Pilih --',
-								'class' => 'form-control',
-								'wire:model' => 'form.horecataiment_group_type'
-							]);
-							@endphp --}}
-							<select class="form-control" wire:model.live='form.horecataiment_group_type'>
+							<select class="form-control" wire:model='form.horecataiment_group_type'>
 								<option value="">-- Pilih --</option>
 								@foreach ($horecagrouptype as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>
@@ -71,8 +64,7 @@
 					</div>
 
 					<div class="row mb-3">
-						<label for="horecataiment_outlet_type" class="col-lg-5 col-form-label">Horecataiment Outlet
-							Type <x-asteriks /></label>
+						<label for="horecataiment_outlet_type" class="col-lg-5 col-form-label">Horecataiment Outlet Type <x-asteriks /></label>
 						<div class="col-lg-7">
 							@php
 							echo Form::select('horecataiment_outlet_type', [], '', [
@@ -290,8 +282,12 @@
 							@enderror
 						</div>
 					</div>
+
 				</div>
 				<div class="modal-footer">
+					<div wire:loading wire:target="createNewOutlet">
+						<div class="spinner spinner-success mr-15"></div>
+					</div>
 					<button type="submit" class="btn btn-primary font-weight-bold">Save changes</button>
 				</div>
 			</form>

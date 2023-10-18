@@ -10,7 +10,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 
 #[Title('Post')]
-#[Layout('layouts.post')]
+// #[Layout('layouts.post')]
 
 class PostIndex extends Component
 {

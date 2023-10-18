@@ -110,9 +110,17 @@
 
 @section('script')
 <script>
-    window.addEventListener('close-modal', event => {
-		$('.text-danger').hide();
-        $('#createOutlet').modal('hide');
-    })
+window.addEventListener('close-modal', event => {
+	$('.text-danger').hide();
+	$('.text-validation').hide();
+	$('#createOutlet').modal('hide');
+})
+
+window.addEventListener('saved', event => {
+	$('.text-danger').hide();
+	$('.text-validation').hide();
+	$('#createOutlet').modal('hide');
+	Swal.fire("Data saved", "You clicked the button!", "success");
+})
 </script>
 @endsection

@@ -19,6 +19,9 @@
 		.asteriks {
 			color: red;
 		}
+		.text-validation {
+			color: red;
+		}
 	</style>
 	{{-- @vite(['resources/js/engine.js']) --}}
 </head>

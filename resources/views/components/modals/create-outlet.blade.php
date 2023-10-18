@@ -3,7 +3,8 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="$dispatch('close-modal')">
+				{{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="$dispatch('close-modal')"> --}}
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click='closeModal'>
 					<i aria-hidden="true" class="ki ki-close"></i>
 				</button>
 			</div>

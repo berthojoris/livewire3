@@ -7,6 +7,7 @@ use App\Models\Outlet;
 use Livewire\Component;
 use App\Models\Regional;
 use App\Models\AreaOffice;
+use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use Livewire\Attributes\Rule;
 use App\Models\StatusTracking;
@@ -39,16 +40,16 @@ class NonKontrakIndex extends Component
 	public $outlet_name = '';
 
 	#[Rule('required')]
-	public $horecataiment_group_type = '';
+	public $horecataiment_group_type;
 
 	#[Rule('required')]
-	public $horecataiment_outlet_type = '';
+	public $horecataiment_outlet_type = [];
 
 	#[Rule('required')]
-	public $ro = '';
+	public $ro;
 
 	#[Rule('required')]
-	public $ao = '';
+	public $ao = [];
 
 	#[Rule('required')]
 	public $alamat = '';
@@ -90,8 +91,13 @@ class NonKontrakIndex extends Component
 	{
 		$validated = $this->validate();
 
-		$this->dispatch('close-modal');
-		$this->js('alert("Saved")');
+		$validated['user_id'] = auth()->user()->id;
+		$validated['status'] = 1;
+		$validated['uuid'] = Str::uuid();
+
+		Outlet::create($validated);
+
+		$this->saved();
 	}
 
 	public function mount()
@@ -129,9 +135,19 @@ class NonKontrakIndex extends Component
 		]);
     }
 
+	public function saved()
+	{
+		$this->reset();
+		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
+		$this->dataro = Regional::pluck('name', 'id');
+		$this->dispatch('saved');
+	}
+
 	public function closeModal()
 	{
-		$this->form->resetPage();
+		$this->reset();
+		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
+		$this->dataro = Regional::pluck('name', 'id');
 		$this->dispatch('close-modal');
 	}
 

@@ -85921,8 +85921,9 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
-  padding: 0 25px;
   height: 65px;
+  padding-top: 5px;
+  padding-left: 10px;
 }
 .brand .brand-logo {
   display: -webkit-box;

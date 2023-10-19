@@ -15,6 +15,7 @@ use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
 use App\Models\HorecataimentGroupType;
 use App\Models\HorecataimentOutletType;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 #[Title('Non Kontrak')]
 
 class NonKontrakIndex extends Component
@@ -141,6 +142,8 @@ class NonKontrakIndex extends Component
 		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
 		$this->dispatch('saved');
+        sleep(5);
+        $this->dispatch('alert');
 	}
 
 	public function closeModal()

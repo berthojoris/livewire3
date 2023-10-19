@@ -36,7 +36,7 @@
 					</div>
 				</div>
 
-				<a href="#" class="btn btn-primary font-weight-bolder" data-bs-toggle="modal" data-bs-target="#createOutlet">
+				<a href="#" class="btn btn-primary font-weight-bolder" data-toggle="modal" data-target="#createOutlet">
 					<span class="svg-icon svg-icon-md">
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -112,33 +112,6 @@
 
 @section('script')
 <script>
-window.addEventListener('close-modal', event => {
-	$('.text-danger').hide();
-	$('.text-validation').hide();
-	$('#createOutlet').modal('hide');
-	$(':input')
-	.not(':button, :submit, :reset, :hidden')
-	.val('')
-	.prop('checked', false)
-	.prop('selected', false);
-	$("#horecataiment_outlet_type").empty();
-	$("#ao").empty().empty();
 
-	$('<option/>').val("").text('-- Pilih --').appendTo('#horecataiment_outlet_type')
-	$('<option/>').val("").text('-- Pilih --').appendTo('#ao')
-})
-
-window.addEventListener('saved', event => {
-	$('.text-danger').hide();
-	$('.text-validation').hide();
-	$('#createOutlet').modal('hide');
-	Swal.fire("Data saved", "You clicked the button!", "success");
-})
-
-window.addEventListener('close-akuisisi', event => {
-	$('.text-danger').hide();
-	$('.text-validation').hide();
-	$('#akuisisi').modal('hide');
-})
 </script>
 @endsection

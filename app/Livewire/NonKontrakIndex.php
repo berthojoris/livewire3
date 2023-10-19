@@ -142,8 +142,6 @@ class NonKontrakIndex extends Component
 		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
 		$this->dispatch('saved');
-        sleep(5);
-        $this->dispatch('alert');
 	}
 
 	public function closeModal()

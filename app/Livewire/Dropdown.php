@@ -40,4 +40,9 @@ class Dropdown extends Component
     {
         return view('livewire.dropdown');
     }
+
+	public function alert()
+	{
+        $this->dispatch('alert');
+	}
 }

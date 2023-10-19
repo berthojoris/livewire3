@@ -110,8 +110,8 @@
 	<x-modals.akuisisi/>
 </div>
 
-@section('script')
+{{-- @section('script')
 <script>
 
 </script>
-@endsection
+@endsection --}}

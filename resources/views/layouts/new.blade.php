@@ -15,6 +15,7 @@
 	<link href="{{ asset('assets/css/themes/layout/brand/dark.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('assets/css/themes/layout/aside/dark.css') }}" rel="stylesheet" type="text/css" />
 	<link href="{{ asset('template/favicon.ico') }}" rel="shortcut icon" />
+	<script src="{{ asset('template/js/notify.min.js') }}"></script>
 	<style>
 		.asteriks {
 			color: red;

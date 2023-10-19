@@ -51,6 +51,7 @@
         Launch demo modal
     </button>
 
+	{{-- <button type="button" class="btn btn-primary" @click="$dispatch('notify')"> --}}
 	<button type="button" class="btn btn-primary" wire:click='alert'>
         Sweet Alert
     </button>

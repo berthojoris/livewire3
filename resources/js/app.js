@@ -37,3 +37,29 @@ window.addEventListener("close-akuisisi", (event) => {
 document.addEventListener("livewire:navigated", () => {
     console.log("navigated");
 });
+
+document.addEventListener("notif", (event) => {
+    let data = event.detail;
+
+    if(data.type == "success") {
+        var color = 'success'
+    } else if(data.type == "error") {
+        var color = 'danger'
+    } else if(data.type == "warning") {
+        var color = 'warning'
+    }else {
+        var color = 'primary'
+    }
+
+    $.notify({
+        title: "Notification",
+        message: data.message,
+    },{
+        allow_dismiss: true,
+        type: color,
+        animate:{
+            enter:"animate__animated animate__bounceIn",
+            exit:"animate__animated animate__bounceIn"
+        },
+    });
+});

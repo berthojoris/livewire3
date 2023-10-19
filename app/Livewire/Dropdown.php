@@ -43,6 +43,10 @@ class Dropdown extends Component
 
 	public function alert()
 	{
-        $this->dispatch('alert');
+        $this->dispatch(
+			'notif',
+			type: 'success',
+			message: 'Load data ...'
+		);
 	}
 }

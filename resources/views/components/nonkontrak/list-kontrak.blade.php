@@ -19,7 +19,7 @@
 	</td>
 	<td class="datatable-cell" style="width: 10%;">
 		<span>
-			<a data-bs-toggle="modal" data-bs-target="#akuisisi" href="#">
+			<a data-toggle="modal" data-target="#akuisisi" href="#">
 				<i aria-hidden="true" class="fas fa-file-alt"></i>
 			</a>
 		</span>

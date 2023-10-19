@@ -33,3 +33,7 @@ window.addEventListener("close-akuisisi", (event) => {
     $(".text-validation").hide();
     $("#akuisisi").modal("hide");
 });
+
+document.addEventListener("livewire:navigated", () => {
+    console.log("navigated");
+});

@@ -10,8 +10,12 @@ window.addEventListener("close-modal", (event) => {
         .val("")
         .prop("checked", false)
         .prop("selected", false);
+
+    $("#ro").prop("selectedIndex", 0);
+    $("#horecataiment_group_type").prop("selectedIndex", 0);
+
     $("#horecataiment_outlet_type").empty();
-    $("#ao").empty().empty();
+    $("#ao").empty();
 
     $("<option/>")
         .val("")

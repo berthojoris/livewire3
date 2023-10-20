@@ -49,7 +49,7 @@
 					<div class="row mb-3">
 						<label for="horecataiment_group_type" class="col-lg-5 col-form-label">Horecataiment Group Type <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model.live='horecataiment_group_type'>
+							<select class="form-control" wire:model.live='horecataiment_group_type' id="horecataiment_group_type">
 								<option value="">-- Pilih --</option>
 								@foreach ($categories as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>
@@ -66,7 +66,7 @@
 					<div class="row mb-3">
 						<label for="horecataiment_outlet_type" class="col-lg-5 col-form-label">Horecataiment Outlet Type <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model.live='horecataiment_outlet_type'>
+							<select class="form-control" wire:model.live='horecataiment_outlet_type' id="horecataiment_outlet_type">
 								<option value="">-- Pilih --</option>
 								@foreach ($subcategories as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>
@@ -83,7 +83,7 @@
 					<div class="row mb-3">
 						<label for="ro" class="col-lg-5 col-form-label">RO <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model.live='ro'>
+							<select class="form-control" wire:model.live='ro' id="ro">
 								<option value="">-- Pilih --</option>
 								@foreach ($dataro as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>
@@ -100,7 +100,7 @@
 					<div class="row mb-3">
 						<label for="ao" class="col-lg-5 col-form-label">AO <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model.live='ao'>
+							<select class="form-control" wire:model.live='ao' id="ao">
 								<option value="">-- Pilih --</option>
 								@foreach ($dataao as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>

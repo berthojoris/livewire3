@@ -13,7 +13,6 @@ use Livewire\Attributes\Rule;
 use App\Models\StatusTracking;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
-use App\Livewire\Forms\AkuisisiForm;
 use App\Models\HorecataimentGroupType;
 use App\Models\HorecataimentOutletType;
 
@@ -29,10 +28,13 @@ class NonKontrakIndex extends Component
 	public $categories;
 	public $subcategories = [];
 
-	public $outlet = [];
+	public $outlet = "";
 
 	public $dataro;
 	public $dataao = [];
+
+	public $updateHot = [];
+	public $updateAo = [];
 
 	#[Rule('nullable')]
     public $tp_code = '';
@@ -178,9 +180,11 @@ class NonKontrakIndex extends Component
 
 	public function openModalAkuisisi($uuid)
 	{
-		$this->outlet = '';
-		$outletToModal = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
-		$this->outlet = $outletToModal->toArray();
+		$outlet = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
+		$this->outlet = $outlet->toArray();
+
+		$this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $outlet->horecataiment_group_type)->pluck('outlet_name', 'id');
+		$this->updateAo = AreaOffice::where('regional_id', $outlet->ro)->pluck('name', 'id');
 
 		$this->dispatch('open_modal_akuisisi');
 	}

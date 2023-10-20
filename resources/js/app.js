@@ -1,5 +1,5 @@
 // import 'bootstrap';
-// import './bootstrap';
+// import './libs';
 
 window.addEventListener("close-modal", (event) => {
     $(".text-danger").hide();

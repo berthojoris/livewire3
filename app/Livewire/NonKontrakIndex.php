@@ -13,9 +13,10 @@ use Livewire\Attributes\Rule;
 use App\Models\StatusTracking;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
+use App\Livewire\Forms\AkuisisiForm;
 use App\Models\HorecataimentGroupType;
 use App\Models\HorecataimentOutletType;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
+
 #[Title('Non Kontrak')]
 
 class NonKontrakIndex extends Component
@@ -70,7 +71,8 @@ class NonKontrakIndex extends Component
 	#[Rule('required')]
 	public $nama_pic_outlet = '';
 
-	#[Rule('required|regex:/^[0-9]+$/')]
+	#[Rule('required', message: 'Telp pic outlet field is required')]
+	#[Rule('regex:/^[0-9]+$/', message: 'Telp pic only accept numbers')]
 	public $telp_pic_outlet = '';
 
 	#[Rule('nullable')]
@@ -99,6 +101,14 @@ class NonKontrakIndex extends Component
 		Outlet::create($validated);
 
 		$this->saved();
+	}
+
+	public function saved()
+	{
+		$this->reset();
+		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
+		$this->dataro = Regional::pluck('name', 'id');
+		$this->dispatch('saved');
 	}
 
 	public function mount()
@@ -135,14 +145,6 @@ class NonKontrakIndex extends Component
 			'brands' => Brand::where('status', 'ACTIVE')->pluck('merek', 'id'),
 		]);
     }
-
-	public function saved()
-	{
-		$this->reset();
-		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
-		$this->dataro = Regional::pluck('name', 'id');
-		$this->dispatch('saved');
-	}
 
 	public function closeModal()
 	{

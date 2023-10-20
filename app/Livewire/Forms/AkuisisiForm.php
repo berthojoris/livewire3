@@ -2,11 +2,16 @@
 
 namespace App\Livewire\Forms;
 
-use Livewire\Attributes\Rule;
 use Livewire\Form;
+use App\Models\Outlet;
+use App\Models\Regional;
+use Illuminate\Support\Str;
+use Livewire\Attributes\Rule;
+use App\Models\HorecataimentGroupType;
 
 class AkuisisiForm extends Form
 {
+
 	#[Rule('nullable')]
     public $tp_code = '';
 
@@ -17,16 +22,16 @@ class AkuisisiForm extends Form
 	public $outlet_name = '';
 
 	#[Rule('required')]
-	public $horecataiment_group_type = '';
+	public $horecataiment_group_type;
 
 	#[Rule('required')]
-	public $horecataiment_outlet_type = '';
+	public $horecataiment_outlet_type = [];
 
 	#[Rule('required')]
-	public $ro = '';
+	public $ro;
 
 	#[Rule('required')]
-	public $ao = '';
+	public $ao = [];
 
 	#[Rule('required')]
 	public $alamat = '';
@@ -46,7 +51,7 @@ class AkuisisiForm extends Form
 	#[Rule('required')]
 	public $nama_pic_outlet = '';
 
-	#[Rule('required')]
+	#[Rule('required|regex:/^[0-9]+$/')]
 	public $telp_pic_outlet = '';
 
 	#[Rule('nullable')]
@@ -66,7 +71,12 @@ class AkuisisiForm extends Form
 
 	public function store()
     {
-        $this->validate();
-		// $this->reset();
+		$validated = $this->validate();
+
+		$validated['user_id'] = auth()->user()->id;
+		$validated['status'] = 1;
+		$validated['uuid'] = Str::uuid();
+
+		Outlet::create($validated);
     }
 }

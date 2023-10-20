@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Brand;
+use App\Models\Outlet;
 use App\Models\CEManager;
 use App\Models\MailReceipt;
 use App\Models\StatusTracking;
@@ -110,5 +111,14 @@ class DatabaseSeeder extends Seeder
 		];
 
 		MailReceipt::insert($status);
+
+		Outlet::where("instalasi_branding", 'yes')->update(["instalasi_branding" => "1"]);
+		Outlet::where("instalasi_branding", "")->update(["instalasi_branding" => "0"]);
+
+		Outlet::where("kontrak_event", 'yes')->update(["kontrak_event" => "1"]);
+		Outlet::where("kontrak_event", "")->update(["kontrak_event" => "0"]);
+
+		Outlet::where("selling", 'yes')->update(["selling" => "1"]);
+		Outlet::where("selling", "")->update(["selling" => "0"]);
     }
 }

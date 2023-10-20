@@ -38,8 +38,8 @@
 	@include('partials.kt_demo_panel') --}}
 
 	@livewireScripts
-	<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}" data-navigate-once></script>
-	<script src="{{ asset('assets/js/scripts.bundle.js') }}" data-navigate-once></script>
+	<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
+	<script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
 	@vite(['resources/js/app.js'])
 	@yield('script')
 </body>

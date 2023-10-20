@@ -8,6 +8,7 @@ use Livewire\Component;
 use App\Models\Regional;
 use App\Models\AreaOffice;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\Attributes\Rule;
 use App\Models\StatusTracking;
@@ -28,13 +29,13 @@ class NonKontrakIndex extends Component
 	public $categories;
 	public $subcategories = [];
 
-	public $outlet = "";
+	public $outlet = [];
 
 	public $dataro;
 	public $dataao = [];
 
-	public $updateHot = [];
-	public $updateAo = [];
+	public $idHgt = '';
+	public $idRo = '';
 
 	#[Rule('nullable')]
     public $tp_code = '';
@@ -184,7 +185,8 @@ class NonKontrakIndex extends Component
 		$this->outlet = $outlet->toArray();
 
 		$this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $outlet->horecataiment_group_type)->pluck('outlet_name', 'id');
-		$this->updateAo = AreaOffice::where('regional_id', $outlet->ro)->pluck('name', 'id');
+
+		$this->dataao = AreaOffice::where('regional_id', $outlet->ro)->pluck('name', 'id');
 
 		$this->dispatch('open_modal_akuisisi');
 	}

@@ -107,11 +107,5 @@
 
 	<x-modals.create-outlet :brands="$brands" :dataro="$dataro" :dataao="$dataao" :categories="$categories" :subcategories="$subcategories" />
 
-	<x-modals.akuisisi/>
+	<x-modals.akuisisi :subcategories="$subcategories" :dataao="$dataao" :outlet="$outlet"/>
 </div>
-
-{{-- @section('script')
-<script>
-
-</script>
-@endsection --}}

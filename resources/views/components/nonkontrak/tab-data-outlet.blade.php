@@ -75,7 +75,7 @@
 					<label class="col-lg-4 col-form-label">Horeca Outlet Type</label>
 					<div class="col-lg-8">
 						@php
-							echo Form::select('horecataiment_outlet_type', $this->subcategories, null, [
+							echo Form::select('horecataiment_outlet_type', $this->updateHot, null, [
 								'placeholder' => '-- Pilih --',
 								'class' => 'form-control',
 								'wire:model' => 'outlet.horecataiment_outlet_type'
@@ -142,18 +142,6 @@
 					<div class="col-lg-8">
 						<input type="text" class="form-control" wire:model='outlet.kecamatan'/>
 						@error('kecamatan')
-						<span class="text-danger" role="alert">
-							<strong>{{ $message }}</strong>
-						</span>
-						@enderror
-					</div>
-				</div>
-
-				<div class="form-group row">
-					<label class="col-lg-4 col-form-label">xxxxx</label>
-					<div class="col-lg-8">
-						<input type="text" class="form-control" wire:model='outlet.xxxxx'/>
-						@error('xxxxx')
 						<span class="text-danger" role="alert">
 							<strong>{{ $message }}</strong>
 						</span>

@@ -81,7 +81,7 @@
 					</div>
 
 					<div class="row mb-3">
-						<label for="ro" class="col-lg-5 col-form-label">RO <x-asteriks /></label>
+						<label for="ro" class="col-lg-5 col-form-label">Regional Office <x-asteriks /></label>
 						<div class="col-lg-7">
 							<select class="form-control" wire:model.live='ro' id="ro">
 								<option value="">-- Pilih --</option>

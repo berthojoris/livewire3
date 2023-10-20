@@ -29,6 +29,8 @@ class NonKontrakIndex extends Component
 	public $categories;
 	public $subcategories = [];
 
+	public $outlet = [];
+
 	public $dataro;
 	public $dataao = [];
 
@@ -174,9 +176,12 @@ class NonKontrakIndex extends Component
 		return $query;
 	}
 
-	#[Computed()]
-	public function dataOutlet()
+	public function openModalAkuisisi($uuid)
 	{
-		$query = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->firstOrFail();
+		$this->outlet = '';
+		$outletToModal = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
+		$this->outlet = $outletToModal->toArray();
+
+		$this->dispatch('open_modal_akuisisi');
 	}
 }

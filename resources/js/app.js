@@ -67,3 +67,7 @@ document.addEventListener("notif", (event) => {
         },
     });
 });
+
+window.addEventListener("open_modal_akuisisi", (event) => {
+    $("#akuisisi").modal("show");
+});

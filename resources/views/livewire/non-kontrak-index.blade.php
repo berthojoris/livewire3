@@ -105,6 +105,7 @@
 		</div>
 	</div>
 
+
 	<x-modals.create-outlet :brands="$brands" :dataro="$dataro" :dataao="$dataao" :categories="$categories" :subcategories="$subcategories" />
 
 	<x-modals.akuisisi :subcategories="$subcategories" :dataao="$dataao" :outlet="$outlet"/>

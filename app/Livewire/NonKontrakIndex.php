@@ -26,16 +26,13 @@ class NonKontrakIndex extends Component
 	public $search = "";
 	public $status = "";
 
-	public $categories;
+	public $categories = [];
 	public $subcategories = [];
 
 	public $outlet = [];
 
-	public $dataro;
+	public $dataro = [];
 	public $dataao = [];
-
-	public $idHgt = '';
-	public $idRo = '';
 
 	#[Rule('nullable')]
     public $tp_code = '';
@@ -143,6 +140,13 @@ class NonKontrakIndex extends Component
 		}
     }
 
+	#[On('AutoRefresh')]
+	public function refreshPage($data = null)
+	{
+		$this->resetErrorBag();
+		$this->dispatch('render');
+	}
+
     public function render()
     {
         return view('livewire.non-kontrak-index', [
@@ -153,10 +157,17 @@ class NonKontrakIndex extends Component
 
 	public function closeModal()
 	{
+		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
+		$this->dataro = Regional::pluck('name', 'id');
+		$this->reset();
+		$this->dispatch('close-modal');
+	}
+
+	public function resetModalDetail()
+	{
 		$this->reset();
 		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
-		$this->dispatch('close-modal');
 	}
 
 	#[Computed()]
@@ -181,11 +192,14 @@ class NonKontrakIndex extends Component
 
 	public function openModalAkuisisi($uuid)
 	{
+		$this->reset();
+
+		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
+		$this->dataro = Regional::pluck('name', 'id');
+
 		$outlet = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
 		$this->outlet = $outlet->toArray();
-
 		$this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $outlet->horecataiment_group_type)->pluck('outlet_name', 'id');
-
 		$this->dataao = AreaOffice::where('regional_id', $outlet->ro)->pluck('name', 'id');
 
 		$this->dispatch('open_modal_akuisisi');

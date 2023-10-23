@@ -2,8 +2,6 @@
 // import './libs';
 
 window.addEventListener("close-modal", (event) => {
-    $(".text-danger").hide();
-    $(".text-validation").hide();
     $("#createOutlet").modal("hide");
     $(":input")
         .not(":button, :submit, :reset, :hidden")
@@ -25,17 +23,31 @@ window.addEventListener("close-modal", (event) => {
 });
 
 window.addEventListener("saved", (event) => {
-    console.log(event);
-    $(".text-danger").hide();
-    $(".text-validation").hide();
     $("#createOutlet").modal("hide");
     Swal.fire("Data saved", "You clicked the button!", "success");
 });
 
 window.addEventListener("close-akuisisi", (event) => {
-    $(".text-danger").hide();
-    $(".text-validation").hide();
+    // $(".text-danger").hide();
+    // $(".text-validation").hide();
     $("#akuisisi").modal("hide");
+    $(":input")
+        .not(":button, :submit, :reset, :hidden")
+        .val("")
+        .prop("checked", false)
+        .prop("selected", false);
+
+    $("#ro").prop("selectedIndex", 0);
+    $("#horecataiment_group_type").prop("selectedIndex", 0);
+
+    $("#horecataiment_outlet_type").empty();
+    $("#ao").empty();
+
+    $("<option/>")
+        .val("")
+        .text("-- Pilih --")
+        .appendTo("#horecataiment_outlet_type");
+    $("<option/>").val("").text("-- Pilih --").appendTo("#ao");
 });
 
 document.addEventListener("livewire:navigated", () => {
@@ -45,11 +57,15 @@ document.addEventListener("livewire:navigated", () => {
 document.addEventListener("notif", (event) => {
     let data = event.detail;
 
-    if(data.type == "success") {
+    notify("success", data.message)
+});
+
+function notify(type, message) {
+    if(type == "success") {
         var color = 'success'
-    } else if(data.type == "error") {
+    } else if(type == "error") {
         var color = 'danger'
-    } else if(data.type == "warning") {
+    } else if(type == "warning") {
         var color = 'warning'
     }else {
         var color = 'primary'
@@ -57,7 +73,7 @@ document.addEventListener("notif", (event) => {
 
     $.notify({
         title: "Notification",
-        message: data.message,
+        message: message,
     },{
         allow_dismiss: true,
         type: color,
@@ -66,8 +82,11 @@ document.addEventListener("notif", (event) => {
             exit:"animate__animated animate__bounceIn"
         },
     });
-});
+}
 
 window.addEventListener("open_modal_akuisisi", (event) => {
+    $(".text-danger").hide();
+    $(".text-validation").hide();
     $("#akuisisi").modal("show");
+    console.log("hide semua")
 });

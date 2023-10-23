@@ -200,6 +200,7 @@ class NonKontrakIndex extends Component
 		$this->brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
 
 		$outlet = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
+
 		$this->outlet = $outlet->toArray();
 		$this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $outlet->horecataiment_group_type)->pluck('outlet_name', 'id');
 		$this->dataao = AreaOffice::where('regional_id', $outlet->ro)->pluck('name', 'id');

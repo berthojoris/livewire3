@@ -161,7 +161,13 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Brand Suggestion</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.brand_sugestion'/>
+					@php
+						echo Form::select('brand_sugestion', $brands, $outlet->brand_sugestion, [
+							'placeholder' => '-- Pilih --',
+							'class' => 'form-control',
+							'wire:model' => 'outlet.brand_sugestion'
+						]);
+					@endphp
 					@error('brand_sugestion')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>

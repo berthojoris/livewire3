@@ -85,8 +85,5 @@ function notify(type, message) {
 }
 
 window.addEventListener("open_modal_akuisisi", (event) => {
-    $(".text-danger").hide();
-    $(".text-validation").hide();
     $("#akuisisi").modal("show");
-    console.log("hide semua")
 });

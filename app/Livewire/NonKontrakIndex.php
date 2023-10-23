@@ -28,6 +28,7 @@ class NonKontrakIndex extends Component
 
 	public $categories = [];
 	public $subcategories = [];
+	public $brands = [];
 
 	public $outlet = [];
 
@@ -116,6 +117,7 @@ class NonKontrakIndex extends Component
 	public function mount()
     {
         $this->categories = HorecataimentGroupType::pluck('group_name', 'id');
+		$this->brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
         $this->subcategories = collect();
 
 		$this->dataro = Regional::pluck('name', 'id');
@@ -151,7 +153,6 @@ class NonKontrakIndex extends Component
     {
         return view('livewire.non-kontrak-index', [
 			'statuses' => StatusTracking::pluck('status_name', 'id'),
-			'brands' => Brand::where('status', 'ACTIVE')->pluck('merek', 'id'),
 		]);
     }
 
@@ -196,6 +197,7 @@ class NonKontrakIndex extends Component
 
 		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
+		$this->brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
 
 		$outlet = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
 		$this->outlet = $outlet->toArray();

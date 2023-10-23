@@ -27,7 +27,7 @@
 
 				<div class="tab-content mt-5" id="myTabContent">
 					<div class="tab-pane fade show active" id="tab_data_outlet" role="tabpanel" aria-labelledby="tab_data_outlet">
-						<x-nonkontrak.tab-data-outlet :subcategories="$subcategories" :dataao="$dataao" :outlet="$outlet"/>
+						<x-nonkontrak.tab-data-outlet :subcategories="$subcategories" :dataao="$dataao" :outlet="$outlet" :brands="$brands"/>
 					</div>
 					<div class="tab-pane fade" id="tab_validasi" role="tabpanel" aria-labelledby="tab_validasi">
 						<x-nonkontrak.tab-data-validasi />

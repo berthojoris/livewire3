@@ -44,7 +44,7 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model.live='horecataiment_group_type'>
 						@forelse ($this->categories as $key => $val)
-							<option value="{{ $key }}" @if ($key == $outlet->horecataiment_group_type) selected @endif>{{ $val }}</option>
+							{{-- <option value="{{ $key }}" @if ($key == $outlet->horecataiment_group_type) selected @endif>{{ $val }}</option> --}}
 						@empty
 							<option value="">-- Pilih --</option>
 						@endforelse
@@ -62,7 +62,7 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model='horecataiment_outlet_type'>
 						@forelse ($subcategories as $key => $val)
-							<option value="{{ $key }}" @if ($key == $outlet->horecataiment_outlet_type) selected @endif>{{ $val }}</option>
+							{{-- <option value="{{ $key }}" @if ($key == $outlet->horecataiment_outlet_type) selected @endif>{{ $val }}</option> --}}
 						@empty
 							<option value="">-- Pilih --</option>
 						@endforelse
@@ -80,7 +80,7 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model.live='ro'>
 						@forelse ($this->dataro as $key => $val)
-							<option value="{{ $key }}" @if ($key == $outlet->ro) selected @endif>{{ $val }}</option>
+							{{-- <option value="{{ $key }}" @if ($key == $outlet->ro) selected @endif>{{ $val }}</option> --}}
 						@empty
 							<option value="">-- Pilih --</option>
 						@endforelse
@@ -98,7 +98,7 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model='ao'>
 						@forelse ($dataao as $key => $val)
-							<option value="{{ $key }}" @if ($key == $outlet->ao) selected @endif>{{ $val }}</option>
+							{{-- <option value="{{ $key }}" @if ($key == $outlet->ao) selected @endif>{{ $val }}</option> --}}
 						@empty
 							<option value="">-- Pilih --</option>
 						@endforelse
@@ -164,7 +164,7 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model='brand_sugestion'>
 						@forelse ($brands as $key => $val)
-							<option value="{{ $key }}" @if ($key == $outlet->brand_sugestion) selected @endif>{{ $val }}</option>
+							{{-- <option value="{{ $key }}" @if ($key == $outlet->brand_sugestion) selected @endif>{{ $val }}</option> --}}
 						@empty
 							<option value="">-- Pilih --</option>
 						@endforelse
@@ -225,12 +225,20 @@
 				</div>
 			</div>
 
+            @php
+                logger($outlet)
+            @endphp
+
 			<div class="form-group row">
 				<label class="col-lg-5 col-form-label">Instalasi Branding</label>
 				<div class="col-lg-7">
 					<span class="switch switch-icon">
 						<label>
-							<input type="checkbox" wire:model='instalasi_branding' @if ($outlet->instalasi_branding == 1) checked @endif/>
+                            @if (!empty($outlet))
+                                <input type="checkbox" wire:model='instalasi_branding' @if ($outlet->instalasi_branding == 1) checked @endif/>
+                            @else
+                                <input type="checkbox" wire:model='instalasi_branding'/>
+                            @endif
 							<span></span>
 						</label>
 					</span>
@@ -247,7 +255,11 @@
 				<div class="col-lg-7">
 					<span class="switch switch-icon">
 						<label>
-							<input type="checkbox" wire:model='kontrak_event' @if ($outlet->kontrak_event == 1) checked @endif/>
+                            @if (!empty($outlet))
+                                <input type="checkbox" wire:model='kontrak_event' @if ($outlet->kontrak_event == 1) checked @endif/>
+                            @else
+                                <input type="checkbox" wire:model='kontrak_event'/>
+                            @endif
 							<span></span>
 						</label>
 					</span>
@@ -264,7 +276,11 @@
 				<div class="col-lg-7">
 					<span class="switch switch-icon">
 						<label>
-							<input type="checkbox" wire:model='selling' @if ($outlet->selling == 1) checked @endif/>
+                            @if (!empty($outlet))
+                                <input type="checkbox" wire:model='selling' @if ($outlet->selling == 1) checked @endif/>
+                            @else
+                                <input type="checkbox" wire:model='selling'/>
+                            @endif
 							<span></span>
 						</label>
 					</span>

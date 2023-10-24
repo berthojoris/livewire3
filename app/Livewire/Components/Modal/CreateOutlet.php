@@ -96,13 +96,6 @@ class CreateOutlet extends Component
         $this->dataao = collect();
     }
 
-    #[On('open-modal-create')]
-    public function openModal()
-    {
-        logger("openModal");
-        // $this->dispatch('open_modal_create_outlet');
-    }
-
     public function createNewOutlet()
 	{
 		$validated = $this->validate();
@@ -121,6 +114,11 @@ class CreateOutlet extends Component
 		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
 		$this->dispatch('saved');
+        $this->reset();
+	}
+
+    public function closeModal()
+	{
         $this->reset();
 	}
 }

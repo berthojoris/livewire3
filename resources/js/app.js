@@ -87,7 +87,7 @@ function notify(type, message) {
     });
 }
 
-window.addEventListener("open_modal_create_outlet", (event) => {
+window.addEventListener("show-create-modal", (event) => {
     $("#createOutlet").modal("show");
 });
 

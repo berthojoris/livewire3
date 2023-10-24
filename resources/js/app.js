@@ -87,6 +87,11 @@ function notify(type, message) {
     });
 }
 
+window.addEventListener("open_modal_create_outlet", (event) => {
+    $("#createOutlet").modal("show");
+});
+
+
 window.addEventListener("open_modal_akuisisi", (event) => {
     $('#uuid').val(event.detail.uuid);
     $("#akuisisi").modal("show");

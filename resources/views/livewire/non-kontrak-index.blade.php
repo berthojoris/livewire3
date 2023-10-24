@@ -36,7 +36,8 @@
 					</div>
 				</div>
 
-				<a href="#" class="btn btn-primary font-weight-bolder" data-toggle="modal" data-target="#createOutlet">
+				{{-- <a href="#" class="btn btn-primary font-weight-bolder" data-toggle="modal" data-target="#createOutlet"> --}}
+                <a href="#" class="btn btn-primary font-weight-bolder" wire:click='openModalCreate'>
 					<span class="svg-icon svg-icon-md">
 						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 							<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -105,10 +106,8 @@
 		</div>
 	</div>
 
+    {{-- <x-modals.create-outlet :brands="$brands" :dataro="$dataro" :dataao="$dataao" :categories="$categories" :subcategories="$subcategories" /> --}}
 
-	<x-modals.create-outlet :brands="$brands" :dataro="$dataro" :dataao="$dataao" :categories="$categories" :subcategories="$subcategories" />
+    <livewire:update-akuisisi :subcategories="$subcategories" :dataao="$dataao" :outlet="$outlet" :brands="$brands"/>
 
-	{{-- <x-modals.update-outlet :subcategories="$subcategories" :dataao="$dataao" :outlet="$outlet" :brands="$brands"/> --}}
-
-	{{-- <livewire:update-akuisisi :subcategories="$subcategories" :dataao="$dataao" :outlet="$outlet" :brands="$brands"/> --}}
 </div>

@@ -30,8 +30,6 @@ class NonKontrakIndex extends Component
 	public $subcategories = [];
 	public $brands = [];
 
-	public $outlet = [];
-
 	public $dataro = [];
 	public $dataao = [];
 
@@ -92,6 +90,8 @@ class NonKontrakIndex extends Component
 
 	#[Rule('nullable')]
 	public $selling = '';
+
+	public $outlet;
 
 	public function createNewOutlet()
 	{
@@ -162,13 +162,14 @@ class NonKontrakIndex extends Component
 		$this->dataro = Regional::pluck('name', 'id');
 		$this->reset();
 		$this->dispatch('close-modal');
+		$this->dispatch('close-akuisisi');
 	}
 
-	public function resetModalDetail()
+	public function reloadData()
 	{
-		$this->reset();
 		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
+		$this->brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
 	}
 
 	#[Computed()]
@@ -193,18 +194,45 @@ class NonKontrakIndex extends Component
 
 	public function openModalAkuisisi($uuid)
 	{
-		$this->reset();
+		$this->reloadData();
 
-		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
-		$this->dataro = Regional::pluck('name', 'id');
-		$this->brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
+		$this->outlet = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
 
-		$outlet = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
+		$this->tp_code = $this->outlet->tp_code;
+		$this->outlet_code = $this->outlet->outlet_code;
+		$this->outlet_name = $this->outlet->outlet_name;
+		$this->alamat = $this->outlet->alamat;
+		$this->kelurahan = $this->outlet->kelurahan;
+		$this->kecamatan = $this->outlet->kecamatan;
+		$this->kabupaten_kota = $this->outlet->kabupaten_kota;
+		$this->nama_pic_outlet = $this->outlet->nama_pic_outlet;
+		$this->telp_pic_outlet = $this->outlet->telp_pic_outlet;
+		$this->telp_pic_outlet_second = $this->outlet->telp_pic_outlet_second;
+		$this->email_pic_outlet = $this->outlet->email_pic_outlet;
+		$this->instalasi_branding = $this->outlet->instalasi_branding;
+		$this->kontrak_event = $this->outlet->kontrak_event;
+		$this->selling = $this->outlet->selling;
+		$this->horecataiment_group_type = $this->outlet->horecataiment_group_type;
+		$this->ro = $this->outlet->ro;
+		$this->brand_sugestion = $this->outlet->brand_sugestion;
 
-		$this->outlet = $outlet->toArray();
-		$this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $outlet->horecataiment_group_type)->pluck('outlet_name', 'id');
-		$this->dataao = AreaOffice::where('regional_id', $outlet->ro)->pluck('name', 'id');
+		$this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $this->outlet->horecataiment_group_type)->pluck('outlet_name', 'id');
+		$this->dataao = AreaOffice::where('regional_id', $this->outlet->ro)->pluck('name', 'id');
 
 		$this->dispatch('open_modal_akuisisi');
+	}
+
+	public function updateOutlet($uuid)
+	{
+		dd($uuid);
+		$validated = $this->validate();
+
+		$validated['user_id'] = auth()->user()->id;
+		$validated['status'] = 1;
+
+		$updated = Outlet::whereUuid($uuid)->firstOrFail();
+		$updated->update($updated);
+
+		$this->saved();
 	}
 }

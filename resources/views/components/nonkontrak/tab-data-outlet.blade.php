@@ -1,11 +1,11 @@
 <div>
-	<form class="form" wire:submit='updateOutlet'>
+	<form class="form" wire:submit='updateOutlet({{ $outlet->uuid }})'>
 		<div class="card-body">
 			<h3 class="font-size-lg text-dark font-weight-bold">Data outlet:</h3>
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">TP Code</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.tp_code'/>
+					<input type="text" class="form-control" wire:model='tp_code'/>
 					@error('tp_code')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -17,7 +17,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Outlet Code</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.outlet_code'/>
+					<input type="text" class="form-control" wire:model='outlet_code'/>
 					@error('outlet_code')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -29,7 +29,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Outlet Name</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.outlet_name'/>
+					<input type="text" class="form-control" wire:model='outlet_name'/>
 					@error('outlet_name')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -38,14 +38,18 @@
 				</div>
 			</div>
 
+			@php
+				logger();
+			@endphp
+
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Horecataiment Group Type</label>
 				<div class="col-lg-8">
 					@php
-						echo Form::select('horecataiment_group_type', $this->categories, null, [
+						echo Form::select('horecataiment_group_type', $this->categories, $outlet->horecataiment_group_type, [
 							'placeholder' => '-- Pilih --',
 							'class' => 'form-control',
-							'wire:model' => 'outlet.horecataiment_group_type'
+							'wire:model' => 'horecataiment_group_type'
 						]);
 					@endphp
 					@error('horecataiment_group_type')
@@ -63,7 +67,7 @@
 						echo Form::select('horecataiment_outlet_type', $subcategories, $outlet->horecataiment_outlet_type, [
 							'placeholder' => '-- Pilih --',
 							'class' => 'form-control',
-							'wire:model' => 'outlet.horecataiment_outlet_type'
+							'wire:model' => 'horecataiment_outlet_type'
 						]);
 					@endphp
 					@error('horecataiment_outlet_type')
@@ -78,10 +82,10 @@
 				<label class="col-lg-4 col-form-label">Regional Office</label>
 				<div class="col-lg-8">
 					@php
-						echo Form::select('ro', $this->dataro, null, [
+						echo Form::select('ro', $this->dataro, $outlet->ro, [
 							'placeholder' => '-- Pilih --',
 							'class' => 'form-control',
-							'wire:model' => 'outlet.ro'
+							'wire:model' => 'ro'
 						]);
 					@endphp
 					@error('ro')
@@ -99,7 +103,7 @@
 						echo Form::select('ao', $dataao, $outlet->ao, [
 							'placeholder' => '-- Pilih --',
 							'class' => 'form-control',
-							'wire:model' => 'outlet.ao'
+							'wire:model' => 'ao'
 						]);
 					@endphp
 					@error('ao')
@@ -113,7 +117,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Alamat</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.alamat'/>
+					<input type="text" class="form-control" wire:model='alamat'/>
 					@error('alamat')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -125,7 +129,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Kecamatan</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.kecamatan'/>
+					<input type="text" class="form-control" wire:model='kecamatan'/>
 					@error('kecamatan')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -137,7 +141,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Kelurahan</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.kelurahan'/>
+					<input type="text" class="form-control" wire:model='kelurahan'/>
 					@error('kelurahan')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -149,7 +153,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Kabupaten Kota</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.kabupaten_kota'/>
+					<input type="text" class="form-control" wire:model='kabupaten_kota'/>
 					@error('kabupaten_kota')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -165,7 +169,7 @@
 						echo Form::select('brand_sugestion', $brands, $outlet->brand_sugestion, [
 							'placeholder' => '-- Pilih --',
 							'class' => 'form-control',
-							'wire:model' => 'outlet.brand_sugestion'
+							'wire:model' => 'brand_sugestion'
 						]);
 					@endphp
 					@error('brand_sugestion')
@@ -179,7 +183,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Nama PIC Outlet</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.nama_pic_outlet'/>
+					<input type="text" class="form-control" wire:model='nama_pic_outlet'/>
 					@error('nama_pic_outlet')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -191,7 +195,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Telp PIC Outlet</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.telp_pic_outlet'/>
+					<input type="text" class="form-control" wire:model='telp_pic_outlet'/>
 					@error('telp_pic_outlet')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -203,7 +207,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Telp PIC Outlet 2 (Optional)</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.telp_pic_outlet_second'/>
+					<input type="text" class="form-control" wire:model='telp_pic_outlet_second'/>
 					@error('telp_pic_outlet_second')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -215,7 +219,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Email PIC Outlet</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.email_pic_outlet'/>
+					<input type="text" class="form-control" wire:model='email_pic_outlet'/>
 					@error('email_pic_outlet')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -227,7 +231,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Instalasi Branding</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.instalasi_branding'/>
+					<input type="text" class="form-control" wire:model='instalasi_branding'/>
 					@error('instalasi_branding')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -239,7 +243,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Kontrak Event</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.kontrak_event'/>
+					<input type="text" class="form-control" wire:model='kontrak_event'/>
 					@error('kontrak_event')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -251,7 +255,7 @@
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Selling</label>
 				<div class="col-lg-8">
-					<input type="text" class="form-control" wire:model='outlet.selling'/>
+					<input type="text" class="form-control" wire:model='selling'/>
 					@error('selling')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>

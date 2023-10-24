@@ -98,10 +98,6 @@ class NonKontrakIndex extends Component
 	{
 		$validated = $this->validate();
 
-		logger($validated);
-
-		return $validated;
-
 		$validated['user_id'] = auth()->user()->id;
 		$validated['status'] = 1;
 		$validated['uuid'] = Str::uuid();
@@ -163,6 +159,7 @@ class NonKontrakIndex extends Component
 
 	public function closeModal()
 	{
+		$this->resetErrorBag();
 		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
 		$this->reset();
@@ -171,6 +168,7 @@ class NonKontrakIndex extends Component
 
 	public function closeAkuisisi()
 	{
+		$this->resetErrorBag();
 		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
 		$this->reset();

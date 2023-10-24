@@ -231,20 +231,12 @@
 					<div class="row mb-3">
 						<label for="instalasi_branding" class="col-lg-5 col-form-label">Instalasi Branding ?</label>
 						<div class="col-lg-7">
-							{{-- <span class="switch switch-icon">
+							<span class="switch switch-icon">
 								<label>
 									<input type="checkbox" wire:model='instalasi_branding'/>
 									<span></span>
 								</label>
-							</span> --}}
-							<div class="radio-list mt-3">
-								<label class="radio">
-									<input type="radio" name="instalasi_branding" wire:model='instalasi_branding'>
-								<span></span>Ya</label>
-								<label class="radio">
-									<input type="radio" name="instalasi_branding" wire:model='instalasi_branding'>
-								<span></span>Tidak</label>
-							</div>
+							</span>
 							@error('instalasi_branding')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>

@@ -108,18 +108,10 @@ class NonKontrakIndex extends Component
 
 	public function saved()
 	{
-		$this->reset();
 		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
 		$this->dispatch('saved');
-	}
-
-	public function updated()
-	{
-		$this->reset();
-		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
-		$this->dataro = Regional::pluck('name', 'id');
-		$this->dispatch('updated');
+        $this->reset();
 	}
 
 	public function mount()
@@ -150,12 +142,12 @@ class NonKontrakIndex extends Component
 		}
     }
 
-	#[On('AutoRefresh')]
-	public function refreshPage($data = null)
-	{
-		$this->resetErrorBag();
-		$this->dispatch('render');
-	}
+	// #[On('AutoRefresh')]
+	// public function refreshPage($data = null)
+	// {
+	// 	$this->resetErrorBag();
+	// 	$this->dispatch('render');
+	// }
 
     public function render()
     {
@@ -173,21 +165,21 @@ class NonKontrakIndex extends Component
 		$this->dispatch('close-modal');
 	}
 
-	public function closeAkuisisi()
-	{
-		$this->resetErrorBag();
-		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
-		$this->dataro = Regional::pluck('name', 'id');
-		$this->reset();
-		$this->dispatch('close-akuisisi');
-	}
+	// public function closeAkuisisi()
+	// {
+	// 	$this->resetErrorBag();
+	// 	$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
+	// 	$this->dataro = Regional::pluck('name', 'id');
+	// 	$this->reset();
+	// 	$this->dispatch('close-akuisisi');
+	// }
 
-	public function reloadData()
-	{
-		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
-		$this->dataro = Regional::pluck('name', 'id');
-		$this->brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
-	}
+	// public function reloadData()
+	// {
+	// 	$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
+	// 	$this->dataro = Regional::pluck('name', 'id');
+	// 	$this->brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
+	// }
 
 	#[Computed()]
 	public function listKontrak()

@@ -13,7 +13,7 @@
 					<div class="row mb-3">
 						<label for="tp_code" class="col-lg-5 col-form-label">TP Code</label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control" autocomplete="off" wire:model.live='tp_code'>
+							<input type="text" class="form-control" autocomplete="off" wire:model='tp_code'>
 							@error('tp_code')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -25,7 +25,7 @@
 					<div class="row mb-3">
 						<label for="outlet_code" class="col-lg-5 col-form-label">Outlet Code</label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control" autocomplete="off" wire:model.live='outlet_code'>
+							<input type="text" class="form-control" autocomplete="off" wire:model='outlet_code'>
 							@error('outlet_code')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
 					<div class="row mb-3">
 						<label for="outlet_name" class="col-lg-5 col-form-label">Outlet Name <x-asteriks /></label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control" autocomplete="off" wire:model.live='outlet_name'>
+							<input type="text" class="form-control" autocomplete="off" wire:model='outlet_name'>
 							@error('outlet_name')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -66,7 +66,7 @@
 					<div class="row mb-3">
 						<label for="horecataiment_outlet_type" class="col-lg-5 col-form-label">Horecataiment Outlet Type <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model.live='horecataiment_outlet_type' id="horecataiment_outlet_type">
+							<select class="form-control" wire:model='horecataiment_outlet_type' id="horecataiment_outlet_type">
 								<option value="">-- Pilih --</option>
 								@foreach ($subcategories as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>
@@ -100,7 +100,7 @@
 					<div class="row mb-3">
 						<label for="ao" class="col-lg-5 col-form-label">AO <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model.live='ao' id="ao">
+							<select class="form-control" wire:model='ao' id="ao">
 								<option value="">-- Pilih --</option>
 								@foreach ($dataao as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>
@@ -117,7 +117,7 @@
 					<div class="row mb-3">
 						<label for="alamat" class="col-lg-5 col-form-label">Alamat <x-asteriks /></label>
 						<div class="col-lg-7">
-							<textarea class="form-control" wire:model.live='alamat'></textarea>
+							<textarea class="form-control" wire:model='alamat'></textarea>
 							@error('alamat')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -129,7 +129,7 @@
 					<div class="row mb-3">
 						<label for="kecamatan" class="col-lg-5 col-form-label">Kecamatan</label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control" autocomplete="off" wire:model.live='kecamatan'>
+							<input type="text" class="form-control" autocomplete="off" wire:model='kecamatan'>
 							@error('kecamatan')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -141,7 +141,7 @@
 					<div class="row mb-3">
 						<label for="kelurahan" class="col-lg-5 col-form-label">Kelurahan</label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control" autocomplete="off" wire:model.live='kelurahan'>
+							<input type="text" class="form-control" autocomplete="off" wire:model='kelurahan'>
 							@error('kelurahan')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -153,7 +153,7 @@
 					<div class="row mb-3">
 						<label for="kabupaten_kota" class="col-lg-5 col-form-label">Kabupaten / Kota</label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control" autocomplete="off" wire:model.live='kabupaten_kota'>
+							<input type="text" class="form-control" autocomplete="off" wire:model='kabupaten_kota'>
 							@error('kabupaten_kota')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -165,7 +165,7 @@
 					<div class="row mb-3">
 						<label for="brand_sugestion" class="col-lg-5 col-form-label">Brand Sugestion <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model.live='brand_sugestion'>
+							<select class="form-control" wire:model='brand_sugestion'>
 								<option value="">-- Pilih --</option>
 								@foreach ($brands as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>
@@ -182,7 +182,7 @@
 					<div class="row mb-3">
 						<label for="nama_pic_outlet" class="col-lg-5 col-form-label">Nama PIC Outlet <x-asteriks /></label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control" autocomplete="off" wire:model.live='nama_pic_outlet'>
+							<input type="text" class="form-control" autocomplete="off" wire:model='nama_pic_outlet'>
 							@error('nama_pic_outlet')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -194,7 +194,7 @@
 					<div class="row mb-3">
 						<label for="telp_pic_outlet" class="col-lg-5 col-form-label">Telp/Hp PIC Outlet <x-asteriks /></label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control" autocomplete="off" wire:model.live='telp_pic_outlet'>
+							<input type="text" class="form-control" autocomplete="off" wire:model='telp_pic_outlet'>
 							@error('telp_pic_outlet')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -207,7 +207,7 @@
 						<label for="telp_pic_outlet_second" class="col-lg-5 col-form-label">Telp/Hp PIC Outlet 2
 							(Optional)</label>
 						<div class="col-lg-7">
-							<input type="text" class="form-control numberOnly" autocomplete="off" wire:model.live='telp_pic_outlet_second'>
+							<input type="text" class="form-control numberOnly" autocomplete="off" wire:model='telp_pic_outlet_second'>
 							@error('telp_pic_outlet_second')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -219,7 +219,7 @@
 					<div class="row mb-3">
 						<label for="email_pic_outlet" class="col-lg-5 col-form-label">Email PIC Outlet</label>
 						<div class="col-lg-7">
-							<input type="email" class="form-control" autocomplete="off" wire:model.live='email_pic_outlet'>
+							<input type="email" class="form-control" autocomplete="off" wire:model='email_pic_outlet'>
 							@error('email_pic_outlet')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -231,12 +231,20 @@
 					<div class="row mb-3">
 						<label for="instalasi_branding" class="col-lg-5 col-form-label">Instalasi Branding ?</label>
 						<div class="col-lg-7">
-							<span class="switch switch-icon">
+							{{-- <span class="switch switch-icon">
 								<label>
-									<input type="checkbox" wire:model.live='instalasi_branding'/>
+									<input type="checkbox" wire:model='instalasi_branding'/>
 									<span></span>
 								</label>
-							</span>
+							</span> --}}
+							<div class="radio-list mt-3">
+								<label class="radio">
+									<input type="radio" name="instalasi_branding" wire:model='instalasi_branding'>
+								<span></span>Ya</label>
+								<label class="radio">
+									<input type="radio" name="instalasi_branding" wire:model='instalasi_branding'>
+								<span></span>Tidak</label>
+							</div>
 							@error('instalasi_branding')
 							<span class="text-danger" role="alert">
 								<strong>{{ $message }}</strong>
@@ -250,7 +258,7 @@
 						<div class="col-lg-7">
 							<span class="switch switch-icon">
 								<label>
-									<input type="checkbox" wire:model.live='kontrak_event'/>
+									<input type="checkbox" wire:model='kontrak_event'/>
 									<span></span>
 								</label>
 							</span>
@@ -267,7 +275,7 @@
 						<div class="col-lg-7">
 							<span class="switch switch-icon">
 								<label>
-									<input type="checkbox" wire:model.live='selling'/>
+									<input type="checkbox" wire:model='selling'/>
 									<span></span>
 								</label>
 							</span>

@@ -28,8 +28,6 @@ window.addEventListener("saved", (event) => {
 });
 
 window.addEventListener("close-akuisisi", (event) => {
-    // $(".text-danger").hide();
-    // $(".text-validation").hide();
     $("#akuisisi").modal("hide");
     $(":input")
         .not(":button, :submit, :reset, :hidden")

@@ -1,5 +1,6 @@
 <div>
-	<form class="form" wire:submit='updateOutlet({{ $outlet->uuid }})'>
+	<form class="form" wire:submit='updateOutlet()'>
+		<input type="hidden" wire:model='uuid'>
 		<div class="card-body">
 			<h3 class="font-size-lg text-dark font-weight-bold">Data outlet:</h3>
 			<div class="form-group row">
@@ -38,15 +39,11 @@
 				</div>
 			</div>
 
-			@php
-				logger();
-			@endphp
-
 			<div class="form-group row">
 				<label class="col-lg-4 col-form-label">Horecataiment Group Type</label>
 				<div class="col-lg-8">
 					@php
-						echo Form::select('horecataiment_group_type', $this->categories, $outlet->horecataiment_group_type, [
+						echo Form::select('horecataiment_group_type', $this->categories, (is_null($outlet)) ? [] : $outlet->horecataiment_group_type, [
 							'placeholder' => '-- Pilih --',
 							'class' => 'form-control',
 							'wire:model' => 'horecataiment_group_type'
@@ -64,7 +61,7 @@
 				<label class="col-lg-4 col-form-label">Horeca Outlet Type</label>
 				<div class="col-lg-8">
 					@php
-						echo Form::select('horecataiment_outlet_type', $subcategories, $outlet->horecataiment_outlet_type, [
+						echo Form::select('horecataiment_outlet_type', $subcategories, (is_null($outlet)) ? [] : $outlet->horecataiment_outlet_type, [
 							'placeholder' => '-- Pilih --',
 							'class' => 'form-control',
 							'wire:model' => 'horecataiment_outlet_type'
@@ -82,7 +79,7 @@
 				<label class="col-lg-4 col-form-label">Regional Office</label>
 				<div class="col-lg-8">
 					@php
-						echo Form::select('ro', $this->dataro, $outlet->ro, [
+						echo Form::select('ro', $this->dataro, (is_null($outlet)) ? [] : $outlet->ro, [
 							'placeholder' => '-- Pilih --',
 							'class' => 'form-control',
 							'wire:model' => 'ro'
@@ -100,7 +97,7 @@
 				<label class="col-lg-4 col-form-label">Area Office</label>
 				<div class="col-lg-8">
 					@php
-						echo Form::select('ao', $dataao, $outlet->ao, [
+						echo Form::select('ao', $dataao, (is_null($outlet)) ? [] : $outlet->ao, [
 							'placeholder' => '-- Pilih --',
 							'class' => 'form-control',
 							'wire:model' => 'ao'
@@ -166,7 +163,7 @@
 				<label class="col-lg-4 col-form-label">Brand Suggestion</label>
 				<div class="col-lg-8">
 					@php
-						echo Form::select('brand_sugestion', $brands, $outlet->brand_sugestion, [
+						echo Form::select('brand_sugestion', $brands, (is_null($outlet)) ? [] : $outlet->brand_sugestion, [
 							'placeholder' => '-- Pilih --',
 							'class' => 'form-control',
 							'wire:model' => 'brand_sugestion'

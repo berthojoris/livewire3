@@ -25,6 +25,7 @@ class NonKontrakIndex extends Component
 
 	public $search = "";
 	public $status = "";
+	public $uuid = "";
 
 	public $categories = [];
 	public $subcategories = [];
@@ -43,7 +44,7 @@ class NonKontrakIndex extends Component
 	public $outlet_name = '';
 
 	#[Rule('required')]
-	public $horecataiment_group_type;
+	public $horecataiment_group_type = [];
 
 	#[Rule('required')]
 	public $horecataiment_outlet_type = [];
@@ -96,6 +97,10 @@ class NonKontrakIndex extends Component
 	public function createNewOutlet()
 	{
 		$validated = $this->validate();
+
+		logger($validated);
+
+		return $validated;
 
 		$validated['user_id'] = auth()->user()->id;
 		$validated['status'] = 1;
@@ -162,6 +167,13 @@ class NonKontrakIndex extends Component
 		$this->dataro = Regional::pluck('name', 'id');
 		$this->reset();
 		$this->dispatch('close-modal');
+	}
+
+	public function closeAkuisisi()
+	{
+		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
+		$this->dataro = Regional::pluck('name', 'id');
+		$this->reset();
 		$this->dispatch('close-akuisisi');
 	}
 
@@ -198,6 +210,7 @@ class NonKontrakIndex extends Component
 
 		$this->outlet = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
 
+		$this->uuid = $uuid;
 		$this->tp_code = $this->outlet->tp_code;
 		$this->outlet_code = $this->outlet->outlet_code;
 		$this->outlet_name = $this->outlet->outlet_name;
@@ -222,15 +235,14 @@ class NonKontrakIndex extends Component
 		$this->dispatch('open_modal_akuisisi');
 	}
 
-	public function updateOutlet($uuid)
+	public function updateOutlet()
 	{
-		dd($uuid);
 		$validated = $this->validate();
 
 		$validated['user_id'] = auth()->user()->id;
 		$validated['status'] = 1;
 
-		$updated = Outlet::whereUuid($uuid)->firstOrFail();
+		$updated = Outlet::whereUuid($validated['uuid'])->firstOrFail();
 		$updated->update($updated);
 
 		$this->saved();

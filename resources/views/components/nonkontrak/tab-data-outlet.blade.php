@@ -1,5 +1,5 @@
 <div>
-	<form class="form" wire:submit='updateOutlet()'>
+	<form wire:submit='updateOutlet'>
 		<input type="hidden" wire:model='uuid'>
 		<div class="card-body">
 			<h3 class="font-size-lg text-dark font-weight-bold">Data outlet:</h3>
@@ -42,13 +42,13 @@
 			<div class="form-group row">
 				<label class="col-lg-5 col-form-label">Horecataiment Group Type <x-asteriks /></label>
 				<div class="col-lg-7">
-					@php
-						echo Form::select('horecataiment_group_type', $this->categories, (is_null($outlet)) ? [] : $outlet->horecataiment_group_type, [
-							'placeholder' => '-- Pilih --',
-							'class' => 'form-control',
-							'wire:model' => 'horecataiment_group_type'
-						]);
-					@endphp
+					<select class="form-control" wire:model.live='horecataiment_group_type'>
+						@forelse ($this->categories as $key => $val)
+							<option value="{{ $key }}" @if ($key == $outlet->horecataiment_group_type) selected @endif>{{ $val }}</option>
+						@empty
+							<option value="">-- Pilih --</option>
+						@endforelse
+					</select>
 					@error('horecataiment_group_type')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -60,13 +60,13 @@
 			<div class="form-group row">
 				<label class="col-lg-5 col-form-label">Horeca Outlet Type <x-asteriks /></label>
 				<div class="col-lg-7">
-					@php
-						echo Form::select('horecataiment_outlet_type', $subcategories, (is_null($outlet)) ? [] : $outlet->horecataiment_outlet_type, [
-							'placeholder' => '-- Pilih --',
-							'class' => 'form-control',
-							'wire:model' => 'horecataiment_outlet_type'
-						]);
-					@endphp
+					<select class="form-control" wire:model='horecataiment_outlet_type'>
+						@forelse ($subcategories as $key => $val)
+							<option value="{{ $key }}" @if ($key == $outlet->horecataiment_outlet_type) selected @endif>{{ $val }}</option>
+						@empty
+							<option value="">-- Pilih --</option>
+						@endforelse
+					</select>
 					@error('horecataiment_outlet_type')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -78,13 +78,13 @@
 			<div class="form-group row">
 				<label class="col-lg-5 col-form-label">Regional Office <x-asteriks /></label>
 				<div class="col-lg-7">
-					@php
-						echo Form::select('ro', $this->dataro, (is_null($outlet)) ? [] : $outlet->ro, [
-							'placeholder' => '-- Pilih --',
-							'class' => 'form-control',
-							'wire:model' => 'ro'
-						]);
-					@endphp
+					<select class="form-control" wire:model.live='ro'>
+						@forelse ($this->dataro as $key => $val)
+							<option value="{{ $key }}" @if ($key == $outlet->ro) selected @endif>{{ $val }}</option>
+						@empty
+							<option value="">-- Pilih --</option>
+						@endforelse
+					</select>
 					@error('ro')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -96,13 +96,13 @@
 			<div class="form-group row">
 				<label class="col-lg-5 col-form-label">Area Office <x-asteriks /></label>
 				<div class="col-lg-7">
-					@php
-						echo Form::select('ao', $dataao, (is_null($outlet)) ? [] : $outlet->ao, [
-							'placeholder' => '-- Pilih --',
-							'class' => 'form-control',
-							'wire:model' => 'ao'
-						]);
-					@endphp
+					<select class="form-control" wire:model='ao'>
+						@forelse ($dataao as $key => $val)
+							<option value="{{ $key }}" @if ($key == $outlet->ao) selected @endif>{{ $val }}</option>
+						@empty
+							<option value="">-- Pilih --</option>
+						@endforelse
+					</select>
 					@error('ao')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -162,13 +162,13 @@
 			<div class="form-group row">
 				<label class="col-lg-5 col-form-label">Brand Suggestion <x-asteriks /></label>
 				<div class="col-lg-7">
-					@php
-						echo Form::select('brand_sugestion', $brands, (is_null($outlet)) ? [] : $outlet->brand_sugestion, [
-							'placeholder' => '-- Pilih --',
-							'class' => 'form-control',
-							'wire:model' => 'brand_sugestion'
-						]);
-					@endphp
+					<select class="form-control" wire:model='brand_sugestion'>
+						@forelse ($brands as $key => $val)
+							<option value="{{ $key }}" @if ($key == $outlet->brand_sugestion) selected @endif>{{ $val }}</option>
+						@empty
+							<option value="">-- Pilih --</option>
+						@endforelse
+					</select>
 					@error('brand_sugestion')
 					<span class="text-danger" role="alert">
 						<strong>{{ $message }}</strong>
@@ -280,6 +280,9 @@
 		<div class="card-footer">
 			<div class="row">
 				<div class="col-lg-12">
+					<div wire:loading wire:target="updateOutlet">
+						<div class="spinner spinner-success mr-15"></div>
+					</div>
 					<button type="submit" class="btn btn-success float-right">Update</button>
 				</div>
 			</div>

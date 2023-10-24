@@ -27,6 +27,11 @@ window.addEventListener("saved", (event) => {
     Swal.fire("Data saved", "You clicked the button!", "success");
 });
 
+// window.addEventListener("updated", (event) => {
+//     $("#akuisisi").modal("hide");
+//     Swal.fire("Data Updated", "Your data has been updated", "success");
+// });
+
 window.addEventListener("close-akuisisi", (event) => {
     $("#akuisisi").modal("hide");
     $(":input")
@@ -83,5 +88,6 @@ function notify(type, message) {
 }
 
 window.addEventListener("open_modal_akuisisi", (event) => {
+    $('#uuid').val(event.detail.uuid);
     $("#akuisisi").modal("show");
 });

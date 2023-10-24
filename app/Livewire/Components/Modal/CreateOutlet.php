@@ -6,10 +6,12 @@ use App\Models\Brand;
 use App\Models\Outlet;
 use Livewire\Component;
 use App\Models\Regional;
+use App\Models\AreaOffice;
 use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use App\Models\HorecataimentGroupType;
+use App\Models\HorecataimentOutletType;
 
 class CreateOutlet extends Component
 {
@@ -96,6 +98,24 @@ class CreateOutlet extends Component
         $this->dataao = collect();
     }
 
+    public function updatedHorecataimentGroupType($value)
+    {
+		if(is_null($value)) {
+			$this->subcategories = collect();
+		} else {
+			$this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $value)->pluck('outlet_name', 'id');
+		}
+    }
+
+	public function updatedRo($value)
+    {
+		if(is_null($value)) {
+			$this->dataao = collect();
+		} else {
+			$this->dataao = AreaOffice::where('regional_id', $value)->pluck('name', 'id');
+		}
+    }
+
     public function createNewOutlet()
 	{
 		$validated = $this->validate();
@@ -113,12 +133,22 @@ class CreateOutlet extends Component
 	{
 		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
-		$this->dispatch('saved');
         $this->reset();
+		$this->dispatch('saved');
 	}
+
+    #[On('open-modal-create')]
+    public function openModalCreate()
+    {
+        $this->resetErrorBag();
+        $this->resetValidation();
+        $this->dispatch('show-create-modal');
+    }
 
     public function closeModal()
 	{
         $this->reset();
+        $this->resetErrorBag();
+        $this->resetValidation();
 	}
 }

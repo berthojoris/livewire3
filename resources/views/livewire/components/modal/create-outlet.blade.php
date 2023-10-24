@@ -49,7 +49,7 @@
 					<div class="row mb-3">
 						<label for="horecataiment_group_type" class="col-lg-5 col-form-label">Horecataiment Group Type <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model.live='horecataiment_group_type' id="horecataiment_group_type">
+							<select class="form-control" wire:model.live='horecataiment_group_type'>
 								<option value="">-- Pilih --</option>
 								@foreach ($categories as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>

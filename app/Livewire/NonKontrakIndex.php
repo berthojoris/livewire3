@@ -141,13 +141,6 @@ class NonKontrakIndex extends Component
 		}
     }
 
-	// #[On('AutoRefresh')]
-	// public function refreshPage($data = null)
-	// {
-	// 	$this->resetErrorBag();
-	// 	$this->dispatch('render');
-	// }
-
     public function render()
     {
         return view('livewire.non-kontrak-index', [
@@ -163,22 +156,6 @@ class NonKontrakIndex extends Component
 		$this->reset();
 		$this->dispatch('close-modal');
 	}
-
-	// public function closeAkuisisi()
-	// {
-	// 	$this->resetErrorBag();
-	// 	$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
-	// 	$this->dataro = Regional::pluck('name', 'id');
-	// 	$this->reset();
-	// 	$this->dispatch('close-akuisisi');
-	// }
-
-	// public function reloadData()
-	// {
-	// 	$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
-	// 	$this->dataro = Regional::pluck('name', 'id');
-	// 	$this->brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
-	// }
 
 	#[Computed()]
 	public function listKontrak()
@@ -202,8 +179,7 @@ class NonKontrakIndex extends Component
 
     public function openModalCreate()
     {
-        // logger("openModalCreate");
-        $this->dispatch('open-modal-create')->to(CreateOutlet::class);
+        $this->dispatch('open-modal-create');
     }
 
 	public function openModalAkuisisi($uuid)

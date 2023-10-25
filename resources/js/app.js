@@ -91,12 +91,15 @@ window.addEventListener("show-create-modal", (event) => {
     $("#createOutlet").modal("show");
 });
 
+window.addEventListener("show-update-modal", (event) => {
+    $("#updateOutlet").modal("show");
+});
+
 window.addEventListener("close-create-modal", (event) => {
     $("#horecataiment_group_type").prop("selectedIndex", 0);
     $("#ro").prop("selectedIndex", 0);
 });
 
-window.addEventListener("open_modal_akuisisi", (event) => {
-    $('#uuid').val(event.detail.uuid);
-    $("#akuisisi").modal("show");
+window.addEventListener("close-updated-modal", (event) => {
+    //
 });

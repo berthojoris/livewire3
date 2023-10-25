@@ -81,8 +81,6 @@ class CreateOutlet extends Component
 	#[Rule('nullable')]
 	public $selling = '';
 
-	public $outlet = [];
-
     public function render()
     {
         return view('livewire.components.modal.create-outlet');

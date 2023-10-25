@@ -165,8 +165,6 @@ class UpdateAkuisisi extends Component
 	{
 		$validated = $this->validate();
 
-		logger($validated);
-
 		Outlet::whereUuid($validated['uuid'])->update();
 
 		$this->updated();

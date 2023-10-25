@@ -113,6 +113,9 @@ class UpdateOutlet extends Component
         $this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->brands = Brand::where('status', 'ACTIVE')->pluck('merek', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
+
+		$this->subcategories = collect();
+		$this->dataao = collect();
     }
 
 	#[On('open-modal-update')]
@@ -155,21 +158,12 @@ class UpdateOutlet extends Component
 	public function updateData()
 	{
 		$validated = $this->validate();
-
-		logger($validated);
-
 		$outlet = Outlet::whereUuid($validated['uuid'])->firstOrFail();
-
-		$outlet->update([
-			'tp_code' => $validated['tp_code'],
-			'outlet_code' => $validated['outlet_code'],
-			'outlet_name' => $validated['outlet_name'],
-		]);
-
-		$this->updated();
+		$outlet->update($validated);
+		$this->updateForm();
 	}
 
-	public function updated()
+	public function updateForm()
 	{
 		$this->dispatch('outlet-created');
 		$this->dispatch('updated');

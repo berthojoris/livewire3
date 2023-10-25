@@ -54,7 +54,6 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model.live='horecataiment_group_type'>
 						@forelse ($this->categories as $key => $val)
-							{{-- <option value="{{ $key }}" @if ($key == $outlet->horecataiment_group_type) selected @endif>{{ $val }}</option> --}}
 							<option value="{{ $key }}">{{ $val }}</option>
 						@empty
 							<option value="">-- Pilih --</option>
@@ -73,7 +72,6 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model='horecataiment_outlet_type' id="horecataiment_outlet_type">
 						@forelse ($subcategories as $key => $val)
-							{{-- <option value="{{ $key }}" @if ($key == $outlet->horecataiment_outlet_type) selected @endif>{{ $val }}</option> --}}
 							<option value="{{ $key }}">{{ $val }}</option>
 						@empty
 							<option value="">-- Pilih --</option>
@@ -92,7 +90,6 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model.live='ro'>
 						@forelse ($this->dataro as $key => $val)
-							{{-- <option value="{{ $key }}" @if ($key == $outlet->ro) selected @endif>{{ $val }}</option> --}}
 							<option value="{{ $key }}">{{ $val }}</option>
 						@empty
 							<option value="">-- Pilih --</option>
@@ -111,7 +108,6 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model='ao'>
 						@forelse ($dataao as $key => $val)
-							{{-- <option value="{{ $key }}" @if ($key == $outlet->ao) selected @endif>{{ $val }}</option> --}}
 							<option value="{{ $key }}">{{ $val }}</option>
 						@empty
 							<option value="">-- Pilih --</option>

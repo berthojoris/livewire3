@@ -1,5 +1,15 @@
 <div>
-	<form wire:submit='updateOutlet'>
+	@if ($errors->any())
+		<div class="alert alert-danger">
+			<ul>
+				@foreach ($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
+
+	<form wire:submit='updateData'>
 		<input type="hidden" wire:model='uuid'>
 		<div class="card-body">
 			<h3 class="font-size-lg text-dark font-weight-bold">Data outlet:</h3>
@@ -44,7 +54,8 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model.live='horecataiment_group_type'>
 						@forelse ($this->categories as $key => $val)
-							<option value="{{ $key }}" @if ($key == $outlet->horecataiment_group_type) selected @endif>{{ $val }}</option>
+							{{-- <option value="{{ $key }}" @if ($key == $outlet->horecataiment_group_type) selected @endif>{{ $val }}</option> --}}
+							<option value="{{ $key }}">{{ $val }}</option>
 						@empty
 							<option value="">-- Pilih --</option>
 						@endforelse
@@ -62,7 +73,8 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model='horecataiment_outlet_type' id="horecataiment_outlet_type">
 						@forelse ($subcategories as $key => $val)
-							<option value="{{ $key }}" @if ($key == $outlet->horecataiment_outlet_type) selected @endif>{{ $val }}</option>
+							{{-- <option value="{{ $key }}" @if ($key == $outlet->horecataiment_outlet_type) selected @endif>{{ $val }}</option> --}}
+							<option value="{{ $key }}">{{ $val }}</option>
 						@empty
 							<option value="">-- Pilih --</option>
 						@endforelse
@@ -80,7 +92,8 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model.live='ro'>
 						@forelse ($this->dataro as $key => $val)
-							<option value="{{ $key }}" @if ($key == $outlet->ro) selected @endif>{{ $val }}</option>
+							{{-- <option value="{{ $key }}" @if ($key == $outlet->ro) selected @endif>{{ $val }}</option> --}}
+							<option value="{{ $key }}">{{ $val }}</option>
 						@empty
 							<option value="">-- Pilih --</option>
 						@endforelse
@@ -98,7 +111,8 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model='ao'>
 						@forelse ($dataao as $key => $val)
-							<option value="{{ $key }}" @if ($key == $outlet->ao) selected @endif>{{ $val }}</option>
+							{{-- <option value="{{ $key }}" @if ($key == $outlet->ao) selected @endif>{{ $val }}</option> --}}
+							<option value="{{ $key }}">{{ $val }}</option>
 						@empty
 							<option value="">-- Pilih --</option>
 						@endforelse
@@ -164,7 +178,8 @@
 				<div class="col-lg-7">
 					<select class="form-control" wire:model='brand_sugestion'>
 						@forelse ($brands as $key => $val)
-							<option value="{{ $key }}" @if ($key == $outlet->brand_sugestion) selected @endif>{{ $val }}</option>
+							{{-- <option value="{{ $key }}" @if ($key == $outlet->brand_sugestion) selected @endif>{{ $val }}</option> --}}
+							<option value="{{ $key }}">{{ $val }}</option>
 						@empty
 							<option value="">-- Pilih --</option>
 						@endforelse
@@ -292,7 +307,7 @@
 		<div class="card-footer">
 			<div class="row">
 				<div class="col-lg-12">
-					<div wire:loading wire:target="updateOutlet">
+					<div wire:loading wire:target="updateData">
 						<div class="spinner spinner-success mr-15"></div>
 					</div>
 					<button type="submit" class="btn btn-success float-right">Update</button>

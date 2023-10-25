@@ -184,10 +184,8 @@ class NonKontrakIndex extends Component
         $this->dispatch('open-modal-create');
     }
 
-	public function openModalAkuisisi($uuid)
+	public function openModalUpdate($uuid)
 	{
-		$this->dispatch('open-modal-update', [
-			'uuid' => $uuid
-		]);
+		$this->dispatch('open-modal-update', uuid: $uuid);
 	}
 }

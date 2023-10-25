@@ -81,18 +81,4 @@ class Outlet extends Model
     {
         return $this->hasMany(Esign::class);
     }
-
-	// protected function createdAt(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: fn (string $value) => indonesianFullDayAndDate($value),
-    //     );
-    // }
-
-	// protected function updatedAt(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: fn (string $value) => indonesianFullDayAndDate($value),
-    //     );
-    // }
 }

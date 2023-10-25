@@ -19,7 +19,7 @@
 	</td>
 	<td class="datatable-cell" style="width: 10%;">
 		<span>
-			<a data-toggle="modal" href="#" wire:click='openModalAkuisisi("{{ $outlet->uuid }}")'>
+			<a data-toggle="modal" href="#" wire:click='openModalUpdate("{{ $outlet->uuid }}")'>
 				<i aria-hidden="true" class="fas fa-file-alt"></i>
 			</a>
 		</span>

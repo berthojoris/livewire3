@@ -24,34 +24,15 @@ window.addEventListener("close-modal", (event) => {
 
 window.addEventListener("saved", (event) => {
     $("#createOutlet").modal("hide");
-    Swal.fire("Data saved", "You clicked the button!", "success");
+    Swal.fire("Data saved", "Done...", "success");
 });
 
-// window.addEventListener("updated", (event) => {
-//     $("#akuisisi").modal("hide");
-//     Swal.fire("Data Updated", "Your data has been updated", "success");
-// });
 
-window.addEventListener("close-akuisisi", (event) => {
-    $("#akuisisi").modal("hide");
-    $(":input")
-        .not(":button, :submit, :reset, :hidden")
-        .val("")
-        .prop("checked", false)
-        .prop("selected", false);
-
-    $("#ro").prop("selectedIndex", 0);
-    $("#horecataiment_group_type").prop("selectedIndex", 0);
-
-    $("#horecataiment_outlet_type").empty();
-    $("#ao").empty();
-
-    $("<option/>")
-        .val("")
-        .text("-- Pilih --")
-        .appendTo("#horecataiment_outlet_type");
-    $("<option/>").val("").text("-- Pilih --").appendTo("#ao");
+window.addEventListener("updated", (event) => {
+    $("#updateOutlet").modal("hide");
+    Swal.fire("Data updated", "Done...", "success");
 });
+
 
 document.addEventListener("livewire:navigated", () => {
     console.log("navigated");

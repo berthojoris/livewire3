@@ -7,6 +7,7 @@ use App\Models\Outlet;
 use Livewire\Component;
 use App\Models\Regional;
 use App\Models\AreaOffice;
+use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Rule;
 use App\Models\HorecataimentGroupType;
@@ -82,11 +83,29 @@ class UpdateOutlet extends Component
 	#[Rule('nullable')]
 	public $uuid = '';
 
-	public $outlet;
+	public ?Outlet $outlet;
 
     public function render()
     {
         return view('livewire.components.modal.update-outlet');
+    }
+
+	public function updatedHorecataimentGroupType($value)
+    {
+		if(is_null($value)) {
+			$this->subcategories = collect();
+		} else {
+			$this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $value)->pluck('outlet_name', 'id');
+		}
+    }
+
+	public function updatedRo($value)
+    {
+		if(is_null($value)) {
+			$this->dataao = collect();
+		} else {
+			$this->dataao = AreaOffice::where('regional_id', $value)->pluck('name', 'id');
+		}
     }
 
 	public function mount()
@@ -102,34 +121,59 @@ class UpdateOutlet extends Component
         $this->resetErrorBag();
         $this->resetValidation();
 
-		$this->outlet = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
+		$outlet = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
 
-		$this->uuid = $uuid;
-		$this->tp_code = $this->outlet->tp_code;
-		$this->outlet_code = $this->outlet->outlet_code;
-		$this->outlet_name = $this->outlet->outlet_name;
-		$this->alamat = $this->outlet->alamat;
-		$this->kelurahan = $this->outlet->kelurahan;
-		$this->kecamatan = $this->outlet->kecamatan;
-		$this->kabupaten_kota = $this->outlet->kabupaten_kota;
-		$this->nama_pic_outlet = $this->outlet->nama_pic_outlet;
-		$this->telp_pic_outlet = $this->outlet->telp_pic_outlet;
-		$this->telp_pic_outlet_second = $this->outlet->telp_pic_outlet_second;
-		$this->email_pic_outlet = $this->outlet->email_pic_outlet;
-		$this->instalasi_branding = $this->outlet->instalasi_branding;
-		$this->kontrak_event = $this->outlet->kontrak_event;
-		$this->selling = $this->outlet->selling;
-		$this->horecataiment_group_type = $this->outlet->horecataiment_group_type;
-		$this->ro = $this->outlet->ro;
-		$this->brand_sugestion = $this->outlet->brand_sugestion;
-		$this->horecataiment_outlet_type = $this->outlet->horecataiment_outlet_type;
-		$this->ao = $this->outlet->ao;
+        $this->outlet = $outlet;
 
-		$this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $this->outlet->horecataiment_group_type)->pluck('outlet_name', 'id');
-		$this->dataao = AreaOffice::where('regional_id', $this->outlet->ro)->pluck('name', 'id');
+        $this->uuid = $outlet->uuid;
+        $this->tp_code = $outlet->tp_code;
+		$this->outlet_code = $outlet->outlet_code;
+		$this->outlet_name = $outlet->outlet_name;
+		$this->alamat = $outlet->alamat;
+		$this->kelurahan = $outlet->kelurahan;
+		$this->kecamatan = $outlet->kecamatan;
+		$this->kabupaten_kota = $outlet->kabupaten_kota;
+		$this->nama_pic_outlet = $outlet->nama_pic_outlet;
+		$this->telp_pic_outlet = $outlet->telp_pic_outlet;
+		$this->telp_pic_outlet_second = $outlet->telp_pic_outlet_second;
+		$this->email_pic_outlet = $outlet->email_pic_outlet;
+		$this->instalasi_branding = $outlet->instalasi_branding;
+		$this->kontrak_event = $outlet->kontrak_event;
+		$this->selling = $outlet->selling;
+		$this->horecataiment_group_type = $outlet->horecataiment_group_type;
+		$this->ro = $outlet->ro;
+		$this->brand_sugestion = $outlet->brand_sugestion;
+		$this->horecataiment_outlet_type = $outlet->horecataiment_outlet_type;
+		$this->ao = $outlet->ao;
+
+		$this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $outlet->horecataiment_group_type)->pluck('outlet_name', 'id');
+		$this->dataao = AreaOffice::where('regional_id', $outlet->ro)->pluck('name', 'id');
 
         $this->dispatch('show-update-modal');
     }
+
+	public function updateData()
+	{
+		$validated = $this->validate();
+
+		logger($validated);
+
+		$outlet = Outlet::whereUuid($validated['uuid'])->firstOrFail();
+
+		$outlet->update([
+			'tp_code' => $validated['tp_code'],
+			'outlet_code' => $validated['outlet_code'],
+			'outlet_name' => $validated['outlet_name'],
+		]);
+
+		$this->updated();
+	}
+
+	public function updated()
+	{
+		$this->dispatch('outlet-created');
+		$this->dispatch('updated');
+	}
 
 	public function closeModal()
 	{

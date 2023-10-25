@@ -8,6 +8,7 @@ use Livewire\Component;
 use App\Models\Regional;
 use App\Models\AreaOffice;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\Attributes\Rule;
 use App\Models\StatusTracking;
@@ -141,6 +142,7 @@ class NonKontrakIndex extends Component
 		}
     }
 
+	#[On('outlet-created')]
     public function render()
     {
         return view('livewire.non-kontrak-index', [

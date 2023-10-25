@@ -88,6 +88,11 @@ class CreateOutlet extends Component
         return view('livewire.components.modal.create-outlet');
     }
 
+	// public function placeholder()
+	// {
+	// 	return view('placeholder');
+	// }
+
     public function mount()
     {
         $this->categories = HorecataimentGroupType::pluck('group_name', 'id');
@@ -134,6 +139,7 @@ class CreateOutlet extends Component
 		$this->categories = HorecataimentGroupType::pluck('group_name', 'id');
 		$this->dataro = Regional::pluck('name', 'id');
         $this->reset();
+		$this->dispatch('outlet-created');
 		$this->dispatch('saved');
 	}
 

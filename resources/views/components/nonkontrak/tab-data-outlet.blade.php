@@ -60,7 +60,7 @@
 			<div class="form-group row">
 				<label class="col-lg-5 col-form-label">Horeca Outlet Type <x-asteriks /></label>
 				<div class="col-lg-7">
-					<select class="form-control" wire:model='horecataiment_outlet_type'>
+					<select class="form-control" wire:model='horecataiment_outlet_type' id="horecataiment_outlet_type">
 						@forelse ($subcategories as $key => $val)
 							{{-- <option value="{{ $key }}" @if ($key == $outlet->horecataiment_outlet_type) selected @endif>{{ $val }}</option> --}}
 						@empty

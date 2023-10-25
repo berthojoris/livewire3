@@ -105,9 +105,5 @@
 		</div>
 	</div>
 
-
-
-    @livewire('components.modal.create-outlet', ['categories' => $categories, 'subcategories'=> $subcategories, 'dataao' => $dataao, 'outlet' => $outlet, 'brands' => $brands])
-
-
+	<livewire:components.modal.create-outlet :categories="$categories" :subcategories="$subcategories" :dataao="$dataao" :outlet="$outlet" :brands="$brands" />
 </div>

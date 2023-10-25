@@ -185,32 +185,5 @@ class NonKontrakIndex extends Component
 	public function openModalAkuisisi($uuid)
 	{
 		$this->dispatch('get-outlet-data', uuid: $uuid)->to(UpdateAkuisisi::class);
-        // $this->outlet = Outlet::akuisisi()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->whereUuid($uuid)->firstOrFail();
-
-		// $this->uuid = $this->outlet->uuid;
-		// $this->tp_code = $this->outlet->tp_code;
-		// $this->outlet_code = $this->outlet->outlet_code;
-		// $this->outlet_name = $this->outlet->outlet_name;
-		// $this->alamat = $this->outlet->alamat;
-		// $this->kelurahan = $this->outlet->kelurahan;
-		// $this->kecamatan = $this->outlet->kecamatan;
-		// $this->kabupaten_kota = $this->outlet->kabupaten_kota;
-		// $this->nama_pic_outlet = $this->outlet->nama_pic_outlet;
-		// $this->telp_pic_outlet = $this->outlet->telp_pic_outlet;
-		// $this->telp_pic_outlet_second = $this->outlet->telp_pic_outlet_second;
-		// $this->email_pic_outlet = $this->outlet->email_pic_outlet;
-		// $this->instalasi_branding = $this->outlet->instalasi_branding;
-		// $this->kontrak_event = $this->outlet->kontrak_event;
-		// $this->selling = $this->outlet->selling;
-		// $this->horecataiment_group_type = $this->outlet->horecataiment_group_type;
-		// $this->ro = $this->outlet->ro;
-		// $this->brand_sugestion = $this->outlet->brand_sugestion;
-		// $this->horecataiment_outlet_type = $this->outlet->horecataiment_outlet_type;
-		// $this->ao = $this->outlet->ao;
-
-		// $this->subcategories = HorecataimentOutletType::where('horecataiment_group_type_id', $this->outlet->horecataiment_group_type)->pluck('outlet_name', 'id');
-		// $this->dataao = AreaOffice::where('regional_id', $this->outlet->ro)->pluck('name', 'id');
-
-        // $this->dispatch('open_modal_akuisisi', uuid: $uuid);
 	}
 }

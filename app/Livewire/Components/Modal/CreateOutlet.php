@@ -142,6 +142,8 @@ class CreateOutlet extends Component
     {
         $this->resetErrorBag();
         $this->resetValidation();
+		$this->subcategories = collect();
+		$this->dataao = collect();
         $this->dispatch('show-create-modal');
     }
 

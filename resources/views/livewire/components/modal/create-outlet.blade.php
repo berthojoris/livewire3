@@ -2,8 +2,8 @@
     <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click='closeModal'>
+				<h5 class="modal-title" id="exampleModalLabel">Create Outlet</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="$dispatch('close-create-modal')">
 					<i aria-hidden="true" class="ki ki-close"></i>
 				</button>
 			</div>
@@ -49,7 +49,7 @@
 					<div class="row mb-3">
 						<label for="horecataiment_group_type" class="col-lg-5 col-form-label">Horecataiment Group Type <x-asteriks /></label>
 						<div class="col-lg-7">
-							<select class="form-control" wire:model.live='horecataiment_group_type'>
+							<select class="form-control" wire:model.live='horecataiment_group_type' id="horecataiment_group_type">
 								<option value="">-- Pilih --</option>
 								@foreach ($categories as $key => $val)
 									<option value="{{ $key }}">{{ $val }}</option>

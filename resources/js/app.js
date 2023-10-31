@@ -76,11 +76,19 @@ window.addEventListener("show-update-modal", (event) => {
     $("#updateOutlet").modal("show");
 });
 
+window.addEventListener("show-validasi-modal", (event) => {
+    $("#validasiOutlet").modal("show");
+});
+
 window.addEventListener("close-create-modal", (event) => {
     $("#horecataiment_group_type").prop("selectedIndex", 0);
     $("#ro").prop("selectedIndex", 0);
 });
 
 window.addEventListener("close-updated-modal", (event) => {
+    //
+});
+
+window.addEventListener("close-validasi-modal", (event) => {
     //
 });

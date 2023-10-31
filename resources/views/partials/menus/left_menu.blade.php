@@ -1,5 +1,4 @@
 <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1" data-menu-dropdown-timeout="500">
-	<!--begin::Menu Nav-->
 	<ul class="menu-nav">
 		@php
 			$dashboard_icon = "menu-icon flaticon-home";
@@ -12,9 +11,6 @@
 		<x-link :active="(request()->is('kontrak/*') || request()->is('kontrak'))" href="{{ route('kontrak_index') }}" :icon="$contact_icon">Kontrak</x-link>
 		<x-link :active="(request()->is('report/*') || request()->is('report'))" href="{{ route('report_index') }}" :icon="$contact_icon">Report</x-link>
 		<x-link :active="(request()->is('user/*') || request()->is('user'))" href="{{ route('user_index') }}" :icon="$contact_icon">User</x-link>
-        <x-link :active="(request()->is('dropdown/*') || request()->is('dropdown'))" href="{{ route('dropdown') }}" :icon="$contact_icon">Dropdown</x-link>
-		{{-- <x-link :active="request()->routeIs('contact')" href="{{ route('contact') }}" :icon="$contact_icon">Contact</x-link>
-		<x-link :active="request()->routeIs('about')" href="{{ route('about') }}" :icon="$about_icon">About</x-link> --}}
 
 		{{-- <li class="menu-item menu-item-submenu menu-item-open menu-item-here" aria-haspopup="true" data-menu-toggle="hover">
 			<a href="javascript:;" class="menu-link menu-toggle">

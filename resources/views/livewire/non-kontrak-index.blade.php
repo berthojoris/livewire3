@@ -90,7 +90,8 @@
 							<th class="datatable-cell datatable-cell-sort" style="width: 15%;"><span>Horeca Outlet Type</span></th>
 							<th class="datatable-cell datatable-cell-sort" style="width: 10%;"><span>Regional Office</span></th>
 							<th class="datatable-cell datatable-cell-sort" style="width: 10%;"><span>Status</span></th>
-							<th class="datatable-cell datatable-cell-sort" style="width: 10%;"><span>Action</span></th>
+							<th class="datatable-cell datatable-cell-sort" style="width: 5%;"><span>Data</span></th>
+							<th class="datatable-cell datatable-cell-sort" style="width: 5%;"><span>Validasi</span></th>
 						</tr>
 					</thead>
 					<tbody style="" class="datatable-body">
@@ -108,4 +109,6 @@
 	<livewire:components.modal.create-outlet :categories="$categories" :subcategories="$subcategories" :dataao="$dataao" :outlet="$outlet" :brands="$brands" />
 
 	<livewire:components.modal.update-outlet :outlet="$outlet"/>
+
+	<livewire:components.modal.validate-outlet :outlet="$outlet"/>
 </div>

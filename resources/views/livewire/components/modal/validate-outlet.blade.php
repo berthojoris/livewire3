@@ -32,6 +32,7 @@
 							<label class="col-lg-5 col-form-label">Nilai SC</label>
 							<div class="col-lg-7">
 								<input type="text" class="form-control" wire:model.live='nilai_score_card' />
+								<span class="form-text text-muted">Bintang and kuadran will be calculated automatically</span>
 								@error('nilai_score_card')
 								<span class="text-danger" role="alert">
 									<strong>{{ $message }}</strong>
@@ -55,7 +56,11 @@
 						<div class="form-group row">
 							<label class="col-lg-5 col-form-label">Kuadran</label>
 							<div class="col-lg-7">
-								<input type="text" class="form-control" wire:model='kuadran' disabled/>
+								<select class="form-control" wire:model='kuadran'>
+									@foreach ($kuadran as $key => $val)
+										<option value="{{ $key }}">{{ $val }}</option>
+									@endforeach
+								</select>
 								@error('kuadran')
 								<span class="text-danger" role="alert">
 									<strong>{{ $message }}</strong>

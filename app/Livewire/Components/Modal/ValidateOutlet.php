@@ -24,6 +24,12 @@ class ValidateOutlet extends Component
 	public $nilai_score_card = '';
 
 	#[Rule('required')]
+	public $bintang = '';
+
+	#[Rule('required')]
+	public $kuadran = '';
+
+	#[Rule('required')]
 	public $upload_score_card = '';
 
 	#[Rule('required')]
@@ -50,6 +56,7 @@ class ValidateOutlet extends Component
     {
 		$this->resetErrorBag();
         $this->resetValidation();
+		$this->reset();
 
 		$outlet = Outlet::akuisisi()->whereUuid($uuid)->firstOrFail();
 
@@ -61,8 +68,19 @@ class ValidateOutlet extends Component
 		$this->dispatch('show-validasi-modal');
 	}
 
+	public function updatedNilaiScoreCard($value)
+    {
+		if(is_null($value)) {
+			$this->bintang = '';
+			$this->kuadran = '';
+		} else {
+			$this->bintang = 'xxx';
+			$this->kuadran = 'yyy';
+		}
+    }
+
 	public function submitValidasiOutlet()
 	{
-		//
+		$validated = $this->validate();
 	}
 }

@@ -4,7 +4,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLabel">Validasi Outlet</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="$dispatch('close-validasi-modal')">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<i aria-hidden="true" class="ki ki-close"></i>
 				</button>
 			</div>
@@ -16,8 +16,6 @@
 					<input type="hidden" wire:model='uuid'>
 
 					<div class="card-body">
-						<h3 class="font-size-lg text-dark font-weight-bold">Validasi outlet:</h3>
-
 						<div class="form-group row">
 							<label class="col-lg-5 col-form-label">Outlet Code</label>
 							<div class="col-lg-7">
@@ -35,6 +33,30 @@
 							<div class="col-lg-7">
 								<input type="text" class="form-control" wire:model.live='nilai_score_card' />
 								@error('nilai_score_card')
+								<span class="text-danger" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-5 col-form-label">Bintang</label>
+							<div class="col-lg-7">
+								<input type="text" class="form-control" wire:model='bintang' disabled/>
+								@error('bintang')
+								<span class="text-danger" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+								@enderror
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-5 col-form-label">Kuadran</label>
+							<div class="col-lg-7">
+								<input type="text" class="form-control" wire:model='kuadran' disabled/>
+								@error('kuadran')
 								<span class="text-danger" role="alert">
 									<strong>{{ $message }}</strong>
 								</span>

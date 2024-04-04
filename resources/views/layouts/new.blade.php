@@ -43,7 +43,7 @@
 	<script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
 	{{-- <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script> --}}
 	<script src="{{ asset('template/js/libs.js') }}"></script>
-	@yield('script')
+	@stack('script')
 </body>
 
 </html>

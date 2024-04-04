@@ -27,6 +27,11 @@ window.addEventListener("saved", (event) => {
     Swal.fire("Data saved", "Done...", "success");
 });
 
+window.addEventListener("savedValidasi", (event) => {
+    $("#validasiOutlet").modal("hide");
+    Swal.fire("Data saved", "Done...", "success");
+});
+
 
 window.addEventListener("updated", (event) => {
     $("#updateOutlet").modal("hide");
@@ -90,5 +95,5 @@ window.addEventListener("close-updated-modal", (event) => {
 });
 
 window.addEventListener("close-validasi-modal", (event) => {
-    //
+    $("#tanggal_terima_score_card").val('')
 });

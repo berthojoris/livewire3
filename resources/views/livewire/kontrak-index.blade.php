@@ -44,7 +44,15 @@
 				<div class="row align-items-center">
 					<div class="col-lg-9 col-xl-8">
 						<div class="row align-items-center">
-							<x-table-seach />
+							{{-- <x-table-seach /> --}}
+							<div class="col-md-4 my-2 my-md-0">
+								<div class="input-icon">
+									<input type="text" class="form-control" placeholder="Search outlet name..." wire:model.live='search'>
+									<span>
+									<i class="flaticon2-search-1 text-muted"></i>
+									</span>
+								</div>
+							</div>
 							<div class="col-md-4 my-2 my-md-0">
 								<div class="d-flex align-items-center">
 									<label class="mr-3 mb-0 d-none d-md-block">Status:</label>

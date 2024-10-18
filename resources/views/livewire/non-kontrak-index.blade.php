@@ -105,10 +105,4 @@
 			</div>
 		</div>
 	</div>
-
-	<livewire:components.modal.create-outlet :categories="$categories" :subcategories="$subcategories" :dataao="$dataao" :outlet="$outlet" :brands="$brands" />
-
-	<livewire:components.modal.update-outlet :outlet="$outlet"/>
-
-	<livewire:components.modal.validate-outlet :outlet="$outlet"/>
 </div>

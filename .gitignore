@@ -21,3 +21,7 @@ NOTE.txt
 /draft.yaml
 /.blueprint
 NOTE.txt
+
+**/caddy
+frankenphp
+frankenphp-worker.php

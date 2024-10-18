@@ -44,7 +44,6 @@
 				<div class="row align-items-center">
 					<div class="col-lg-9 col-xl-8">
 						<div class="row align-items-center">
-							{{-- <x-table-seach /> --}}
 							<div class="col-md-4 my-2 my-md-0">
 								<div class="input-icon">
 									<input type="text" class="form-control" placeholder="Search outlet name..." wire:model.live='search'>

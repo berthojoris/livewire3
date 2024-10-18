@@ -51,7 +51,8 @@ class KontrakIndex extends Component
 	#[Computed()]
 	public function listKontrak()
 	{
-		$query = Outlet::kontrak()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])->when($this->search != "", function ($q) {
+		$query = Outlet::kontrak()->with(['regional', 'area', 'horecaGroup', 'horecaOutlet', 'statusTracking'])
+		->when($this->search != "", function ($q) {
 			if($this->status == "") {
 				return $q->where('outlet_name', 'like', "%{$this->search}%");
 			} else {
